@@ -16,4 +16,4 @@ ld: 0.1  # lambda
 lr_mult: 10.
 
 
-optimizer: GENIE
+optimizer: genie

@@ -1,0 +1,88 @@
+[37m[36mINFO[0m[0m 02/05 19:43:50 | Command :: /jsm0707/GENIE/train_all.py resnet50_GENIE config/resnet50_GENIE.yaml --algorithm RSC --test_envs 1 --dataset PACS --trial_seed 2 --hparams_seed 10
+Environment:
+	Python: 3.8.10
+	PyTorch: 1.13.1+cu117
+	Torchvision: 0.14.1+cu117
+	CUDA: 11.7
+	CUDNN: 8500
+	NumPy: 1.24.4
+	PIL: 10.4.0
+Args:
+	algorithm: RSC
+	attn_tune: False
+	auto_lr: False
+	checkpoint_freq: None
+	configs: ['config/resnet50_GENIE.yaml']
+	data_dir: data
+	dataset: PACS
+	debug: False
+	deterministic: True
+	dump_scores: False
+	dump_similarities: False
+	evalmode: all
+	evaluate: False
+	full_data: False
+	holdout_fraction: 0.2
+	hparams_seed: 10
+	in_domain: False
+	model_save: None
+	mpa: False
+	name: resnet50_GENIE
+	out_dir: train_output/PACS/RSC/[1]/250205_19-43-50_resnet50_GENIE
+	out_root: train_output/PACS/RSC/[1]
+	prebuild_loader: False
+	resume_path: checkpoints/
+	seed: 0
+	show: False
+	small_bs: False
+	steps: None
+	tb_freq: 10
+	test_envs: [1]
+	trial_seed: 2
+	unique_name: 250205_19-43-50_resnet50_GENIE
+	warmup: False
+	work_dir: .
+HParams:
+	data_augmentation: True
+	val_augment: False
+	resnet18: False
+	linear_steps: -1
+	resnet_dropout: 0.5
+	class_balanced: False
+	optimizer: genie
+	freeze_bn: False
+	pretrained: True
+	lr: 7.494887873901297e-05
+	batch_size: 23
+	weight_decay: 0.000495139494108363
+	rsc_f_drop_factor: 0.29193136203847314
+	rsc_b_drop_factor: 0.14246376157034246
+	swad: False
+	test_batchsize: 128
+	model: resnet50
+	feat_layers: stem_block
+	attn_tune: False
+	auto_lr: False
+Dataset:
+	[PACS] #envs=4, #classes=7
+	env0: A (#2048)
+	env1: C (#2344)
+	env2: P (#1670)
+	env3: S (#3929)
+
+[37m[36mINFO[0m[0m 02/05 19:43:50 | n_steps = 5001
+[37m[36mINFO[0m[0m 02/05 19:43:50 | checkpoint_freq = 200
+[37m[36mINFO[0m[0m 02/05 19:43:50 | n_steps is updated to 5001 => 5001 for checkpointing
+[37m[36mINFO[0m[0m 02/05 19:43:50 | 
+[37m[36mINFO[0m[0m 02/05 19:43:50 | Testenv name escaping te_C -> te_C
+[37m[36mINFO[0m[0m 02/05 19:43:50 | Test envs = [1], name = te_C
+[37m[36mINFO[0m[0m 02/05 19:43:50 | Train environments: [0, 2, 3], Test environments: [1]
+[37m[36mINFO[0m[0m 02/05 19:43:50 | Batch sizes for each domain: [23, 0, 23, 23] (total=69)
+[37m[36mINFO[0m[0m 02/05 19:43:50 | steps-per-epoch for each domain: 71.26, 58.09, 136.70 -> min = 58.09
+[37m[36mINFO[0m[0m 02/05 19:43:52 | # of params = 23522375
+[37m[36mINFO[0m[0m 02/05 19:44:27 | test_in     test_out    train_in    train_out   tr_outloss  env0_in     env0_out    env1_in     env1_out    env2_in     env2_out    env3_in     env3_out    step        epoch       loss        step_time   eval_time  
+[37m[36mINFO[0m[0m 02/05 19:44:27 | 0.205757    0.185897    0.182571    0.193511    1.912419    0.205003    0.234719    0.205757    0.185897    0.142964    0.140719    0.199746    0.205096    0           0.000000    2.554542    1.333376    33.811210  
+[37m[36mINFO[0m[0m 02/05 19:45:57 | 0.231343    0.256410    0.701596    0.688955    0.873154    0.647956    0.652812    0.231343    0.256410    0.848054    0.829341    0.608779    0.584713    200         3.443114    1.703766    0.295260    31.015846  
+[37m[36mINFO[0m[0m 02/05 19:47:33 | 0.644456    0.696581    0.933249    0.919342    0.214707    0.906040    0.911980    0.644456    0.696581    0.980539    0.967066    0.913168    0.878981    400         6.886228    0.698400    0.318617    32.802257  
+[37m[36mINFO[0m[0m 02/05 19:49:11 | 0.706823    0.739316    0.955648    0.939059    0.183574    0.944478    0.941320    0.706823    0.739316    0.983533    0.979042    0.938931    0.896815    600         10.329341   0.425736    0.311089    35.341657  
+[37m[36mINFO[0m[0m 02/05 19:50:49 | 0.768657    0.794872    0.969711    0.948111    0.165662    0.963392    0.924205    0.768657    0.794872    0.990269    0.994012    0.955471    0.926115    800         13.772455   0.352362    0.290886    40.226317  

@@ -1,0 +1,87 @@
+[37m[36mINFO[0m[0m 02/05 19:28:58 | Command :: /jsm0707/GENIE/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm ERM --test_envs 0 --dataset OfficeHome --steps 15000
+Environment:
+	Python: 3.8.10
+	PyTorch: 1.13.1+cu117
+	Torchvision: 0.14.1+cu117
+	CUDA: 11.7
+	CUDNN: 8500
+	NumPy: 1.24.4
+	PIL: 10.4.0
+Args:
+	algorithm: ERM
+	attn_tune: False
+	auto_lr: False
+	checkpoint_freq: None
+	configs: ['config/resnet50_sgd.yaml']
+	data_dir: data
+	dataset: OfficeHome
+	debug: False
+	deterministic: True
+	dump_scores: False
+	dump_similarities: False
+	evalmode: all
+	evaluate: False
+	full_data: False
+	holdout_fraction: 0.2
+	hparams_seed: 0
+	in_domain: False
+	model_save: None
+	mpa: False
+	name: resnet50_sgd
+	out_dir: train_output/OfficeHome/ERM/[0]/250205_19-28-58_resnet50_sgd
+	out_root: train_output/OfficeHome/ERM/[0]
+	prebuild_loader: False
+	resume_path: checkpoints/
+	seed: 0
+	show: False
+	small_bs: False
+	steps: 15000
+	tb_freq: 10
+	test_envs: [0]
+	trial_seed: 0
+	unique_name: 250205_19-28-58_resnet50_sgd
+	warmup: False
+	work_dir: .
+HParams:
+	data_augmentation: True
+	val_augment: False
+	resnet18: False
+	linear_steps: -1
+	resnet_dropout: 0.0
+	class_balanced: False
+	optimizer: sgd
+	freeze_bn: False
+	pretrained: True
+	lr: 5e-05
+	batch_size: 32
+	weight_decay: 0.0
+	swad: False
+	test_batchsize: 128
+	model: resnet50
+	feat_layers: stem_block
+	attn_tune: False
+	auto_lr: False
+Dataset:
+	[OfficeHome] #envs=4, #classes=65
+	env0: A (#2427)
+	env1: C (#4365)
+	env2: P (#4439)
+	env3: R (#4357)
+
+[37m[36mINFO[0m[0m 02/05 19:28:58 | n_steps = 15000
+[37m[36mINFO[0m[0m 02/05 19:28:58 | checkpoint_freq = 200
+[37m[36mINFO[0m[0m 02/05 19:28:58 | n_steps is updated to 15000 => 15001 for checkpointing
+[37m[36mINFO[0m[0m 02/05 19:28:58 | 
+[37m[36mINFO[0m[0m 02/05 19:28:58 | Testenv name escaping te_A -> te_A
+[37m[36mINFO[0m[0m 02/05 19:28:58 | Test envs = [0], name = te_A
+[37m[36mINFO[0m[0m 02/05 19:28:58 | Train environments: [1, 2, 3], Test environments: [0]
+[37m[36mINFO[0m[0m 02/05 19:28:58 | Batch sizes for each domain: [0, 32, 32, 32] (total=96)
+[37m[36mINFO[0m[0m 02/05 19:28:58 | steps-per-epoch for each domain: 109.12, 111.00, 108.94 -> min = 108.94
+[37m[36mINFO[0m[0m 02/05 19:28:59 | # of params = 23641217
+[37m[36mINFO[0m[0m 02/05 19:30:58 | test_in     test_out    train_in    train_out   tr_outloss  env0_in     env0_out    env1_in     env1_out    env2_in     env2_out    env3_in     env3_out    step        epoch       loss        step_time   eval_time  
+[37m[36mINFO[0m[0m 02/05 19:30:58 | 0.016478    0.012371    0.010094    0.009536    4.269917    0.016478    0.012371    0.010309    0.005727    0.005631    0.004510    0.014343    0.018370    0           0.000000    4.273489    0.935879    117.723884 
+[37m[36mINFO[0m[0m 02/05 19:34:44 | 0.019053    0.012371    0.014180    0.011433    4.230138    0.019053    0.012371    0.015464    0.008018    0.009291    0.006764    0.017785    0.019518    200         1.835915    4.242367    0.538288    118.171141 
+[37m[36mINFO[0m[0m 02/05 19:38:28 | 0.020597    0.014433    0.017782    0.018650    4.200087    0.020597    0.014433    0.015464    0.016037    0.014358    0.014656    0.023523    0.025258    400         3.671830    4.207600    0.529994    118.127195 
+[37m[36mINFO[0m[0m 02/05 19:42:08 | 0.023172    0.018557    0.021405    0.022064    4.174753    0.023172    0.018557    0.020046    0.019473    0.015484    0.019166    0.028686    0.027555    600         5.507745    4.177393    0.508945    118.128341 
+[37m[36mINFO[0m[0m 02/05 19:46:06 | 0.025747    0.026804    0.028122    0.028918    4.151724    0.025747    0.026804    0.028064    0.029782    0.026182    0.023675    0.030120    0.033295    800         7.343660    4.150769    0.517204    135.005773 
+[37m[36mINFO[0m[0m 02/05 19:50:48 | 0.027806    0.032990    0.036083    0.036507    4.128890    0.027806    0.032990    0.029210    0.033219    0.037444    0.033822    0.041595    0.042480    1000        9.179575    4.128154    0.650804    152.038297 

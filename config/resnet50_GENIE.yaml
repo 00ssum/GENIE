@@ -16,4 +16,4 @@ feat_layers: stem_block
 # lr_mult: 10.
 
 
-optimizer: GENIE
+optimizer: genie
