@@ -288,32 +288,32 @@ def train(test_envs, args, hparams, n_steps, checkpoint_freq, logger, writer, ta
                  writer.add_scalars_with_prefix(summaries, step, f"{testenv_name}/summary/")
                  writer.add_scalars_with_prefix(accuracies, step, f"{testenv_name}/all/")
 
-                 if is_best:
-                     ckpt_dir = args.out_dir / "checkpoints"
-                     ckpt_dir.mkdir(exist_ok=True)
+                #  if is_best:
+                #      ckpt_dir = args.out_dir / "checkpoints"
+                #      ckpt_dir.mkdir(exist_ok=True)
 
-                     if args.in_domain:
-                         test_env_str = test_envs
-                     else:
-                         test_env_str = ",".join(map(str, test_envs))
-                     filename = "TE{}_best.pth".format(test_env_str)
-                     if not args.in_domain and len(test_envs) > 1 and target_env is not None:
-                         train_env_str = ",".join(map(str, train_envs))
-                         filename = f"TE{target_env}_TR{train_env_str}_best.pth"
-                     path = ckpt_dir / filename
+                #      if args.in_domain:
+                #          test_env_str = test_envs
+                #      else:
+                #          test_env_str = ",".join(map(str, test_envs))
+                #      filename = "TE{}_best.pth".format(test_env_str)
+                #      if not args.in_domain and len(test_envs) > 1 and target_env is not None:
+                #          train_env_str = ",".join(map(str, train_envs))
+                #         #filename = f"TE{target_env}_TR{train_env_str}_best.pth"
+                #      path = ckpt_dir / filename
 
 
-                     save_dict = {
-                         "args": vars(args),
-                         "model_hparams": dict(hparams),
-                         "test_envs": test_envs,
-                         "model_dict": algorithm.cpu().state_dict(),
-                     }
-                     algorithm.cuda()
-                     if not args.debug:
-                         torch.save(save_dict, path)
-                     else:
-                         logger.debug("DEBUG Mode -> no save (org path: %s)" % path)
+                #      save_dict = {
+                #          "args": vars(args),
+                #          "model_hparams": dict(hparams),
+                #          "test_envs": test_envs,
+                #          "model_dict": algorithm.cpu().state_dict(),
+                #      }
+                #      algorithm.cuda()
+                #      if not args.debug:
+                #          torch.save(save_dict, path)
+                #      else:
+                #          logger.debug("DEBUG Mode -> no save (org path: %s)" % path)
 
                  # swad
             if swad and step > hparams["linear_steps"]:

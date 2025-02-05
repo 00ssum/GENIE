@@ -49,7 +49,7 @@ HParams:
 	linear_steps: -1
 	resnet_dropout: 0.0
 	class_balanced: False
-	optimizer: EVE
+	optimizer: GENIE
 	freeze_bn: False
 	pretrained: True
 	lr: 1.6632780446310692e-05
