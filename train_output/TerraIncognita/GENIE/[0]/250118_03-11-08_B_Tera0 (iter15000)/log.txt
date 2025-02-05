@@ -1,4 +1,4 @@
-[37m[36mINFO[0m[0m 01/18 03:11:08 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py B_Tera0_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 19 --algorithm gsnr1224 --test_envs 0 --dataset TerraIncognita --steps 15000
+[37m[36mINFO[0m[0m 01/18 03:11:08 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py B_Tera0_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 19 --algorithm GENIE --test_envs 0 --dataset TerraIncognita --steps 15000
 Environment:
 	Python: 3.8.10
 	PyTorch: 1.13.1+cu117
@@ -8,7 +8,7 @@ Environment:
 	NumPy: 1.24.4
 	PIL: 10.4.0
 Args:
-	algorithm: gsnr1224
+	algorithm: GENIE
 	attn_tune: False
 	auto_lr: False
 	checkpoint_freq: None
@@ -28,8 +28,8 @@ Args:
 	model_save: None
 	mpa: False
 	name: B_Tera0_iter
-	out_dir: train_output/TerraIncognita/gsnr1224/[0]/250118_03-11-08_B_Tera0_iter
-	out_root: train_output/TerraIncognita/gsnr1224/[0]
+	out_dir: train_output/TerraIncognita/GENIE/[0]/250118_03-11-08_B_Tera0_iter
+	out_root: train_output/TerraIncognita/GENIE/[0]
 	prebuild_loader: False
 	resume_path: checkpoints/
 	seed: 0
@@ -159,7 +159,7 @@ Dataset:
 [37m[36mINFO[0m[0m 01/18 07:39:24 | 0.434221    0.462025    0.960957    0.924736    0.276021    0.434221    0.462025    0.963795    0.945044    0.971977    0.926952    0.947100    0.902211    14600       124.118388  0.114068    0.228815    162.781228 
 [37m[36mINFO[0m[0m 01/18 07:43:02 | 0.582652    0.587553    0.964911    0.927445    0.244151    0.582652    0.587553    0.963795    0.950180    0.975126    0.925693    0.955810    0.906463    14800       125.818640  0.120193    0.253172    166.956862 
 [37m[36mINFO[0m[0m 01/18 07:46:46 | 0.440812    0.472574    0.963766    0.929381    0.269249    0.440812    0.472574    0.967775    0.952748    0.973237    0.938287    0.950287    0.897109    15000       127.518892  0.111437    0.247371    174.530890 
-[37m[36mINFO[0m[0m 01/18 07:46:46 | Cumulative gradient change saved at train_output/TerraIncognita/gsnr1224/[0]/250118_03-11-08_B_Tera0_iter/sum_cumulative_g_change.npy
+[37m[36mINFO[0m[0m 01/18 07:46:46 | Cumulative gradient change saved at train_output/TerraIncognita/GENIE/[0]/250118_03-11-08_B_Tera0_iter/sum_cumulative_g_change.npy
 [37m[36mINFO[0m[0m 01/18 07:46:47 | ---
 [37m[36mINFO[0m[0m 01/18 07:46:47 | test-domain validation(oracle) = 66.175%
 [37m[36mINFO[0m[0m 01/18 07:46:47 | training-domain validation(iid) = 44.081%
@@ -167,9 +167,9 @@ Dataset:
 [37m[36mINFO[0m[0m 01/18 07:46:47 | last (inD) = 92.938%
 [37m[36mINFO[0m[0m 01/18 07:46:47 | training-domain validation (iid, inD) = 92.938%
 [37m[36mINFO[0m[0m 01/18 07:46:48 | === Summary ===
-[37m[36mINFO[0m[0m 01/18 07:46:48 | Command: /jsm0707/DomainBed/Large-scale/train_all.py B_Tera0_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 19 --algorithm gsnr1224 --test_envs 0 --dataset TerraIncognita --steps 15000
+[37m[36mINFO[0m[0m 01/18 07:46:48 | Command: /jsm0707/DomainBed/Large-scale/train_all.py B_Tera0_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 19 --algorithm GENIE --test_envs 0 --dataset TerraIncognita --steps 15000
 [37m[36mINFO[0m[0m 01/18 07:46:48 | Unique name: 250118_03-11-08_B_Tera0_iter
-[37m[36mINFO[0m[0m 01/18 07:46:48 | Out path: train_output/TerraIncognita/gsnr1224/[0]/250118_03-11-08_B_Tera0_iter
-[37m[36mINFO[0m[0m 01/18 07:46:48 | Algorithm: gsnr1224
+[37m[36mINFO[0m[0m 01/18 07:46:48 | Out path: train_output/TerraIncognita/GENIE/[0]/250118_03-11-08_B_Tera0_iter
+[37m[36mINFO[0m[0m 01/18 07:46:48 | Algorithm: GENIE
 [37m[36mINFO[0m[0m 01/18 07:46:48 | Dataset: TerraIncognita
 [37m[36mINFO[0m[0m 01/18 07:46:48 | Max test_in: 0.6617

@@ -1,4 +1,4 @@
-[37m[36mINFO[0m[0m 01/19 04:26:21 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py B_VLCS1_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 2 --algorithm gsnr1224 --test_envs 1 --dataset VLCS --steps 15000
+[37m[36mINFO[0m[0m 01/19 04:26:21 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py B_VLCS1_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 2 --algorithm GENIE --test_envs 1 --dataset VLCS --steps 15000
 Environment:
 	Python: 3.8.10
 	PyTorch: 1.13.1+cu117
@@ -8,7 +8,7 @@ Environment:
 	NumPy: 1.24.4
 	PIL: 10.4.0
 Args:
-	algorithm: gsnr1224
+	algorithm: GENIE
 	attn_tune: False
 	auto_lr: False
 	checkpoint_freq: None
@@ -28,8 +28,8 @@ Args:
 	model_save: None
 	mpa: False
 	name: B_VLCS1_iter
-	out_dir: train_output/VLCS/gsnr1224/[1]/250119_04-26-21_B_VLCS1_iter
-	out_root: train_output/VLCS/gsnr1224/[1]
+	out_dir: train_output/VLCS/GENIE/[1]/250119_04-26-21_B_VLCS1_iter
+	out_root: train_output/VLCS/GENIE/[1]
 	prebuild_loader: False
 	resume_path: checkpoints/
 	seed: 0
@@ -159,7 +159,7 @@ Dataset:
 [37m[36mINFO[0m[0m 01/19 08:14:17 | 0.657882    0.630885    0.998992    0.892875    0.921870    1.000000    0.992933    0.657882    0.630885    0.997715    0.833841    0.999260    0.851852    14600       490.106007  0.002796    0.270165    130.401101 
 [37m[36mINFO[0m[0m 01/19 08:17:24 | 0.592941    0.581921    0.998872    0.889827    0.818644    1.000000    0.992933    0.592941    0.581921    0.998096    0.824695    0.998519    0.851852    14800       496.819788  0.003866    0.267504    133.410829 
 [37m[36mINFO[0m[0m 01/19 08:20:29 | 0.623529    0.593220    0.999873    0.893877    0.809069    1.000000    0.992933    0.623529    0.593220    0.999619    0.835366    1.000000    0.853333    15000       503.533569  0.001928    0.265470    131.802367 
-[37m[36mINFO[0m[0m 01/19 08:20:29 | Cumulative gradient change saved at train_output/VLCS/gsnr1224/[1]/250119_04-26-21_B_VLCS1_iter/sum_cumulative_g_change.npy
+[37m[36mINFO[0m[0m 01/19 08:20:29 | Cumulative gradient change saved at train_output/VLCS/GENIE/[1]/250119_04-26-21_B_VLCS1_iter/sum_cumulative_g_change.npy
 [37m[36mINFO[0m[0m 01/19 08:20:30 | ---
 [37m[36mINFO[0m[0m 01/19 08:20:30 | test-domain validation(oracle) = 69.365%
 [37m[36mINFO[0m[0m 01/19 08:20:30 | training-domain validation(iid) = 68.565%
@@ -167,9 +167,9 @@ Dataset:
 [37m[36mINFO[0m[0m 01/19 08:20:30 | last (inD) = 89.388%
 [37m[36mINFO[0m[0m 01/19 08:20:30 | training-domain validation (iid, inD) = 91.092%
 [37m[36mINFO[0m[0m 01/19 08:20:30 | === Summary ===
-[37m[36mINFO[0m[0m 01/19 08:20:30 | Command: /jsm0707/DomainBed/Large-scale/train_all.py B_VLCS1_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 2 --algorithm gsnr1224 --test_envs 1 --dataset VLCS --steps 15000
+[37m[36mINFO[0m[0m 01/19 08:20:30 | Command: /jsm0707/DomainBed/Large-scale/train_all.py B_VLCS1_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 2 --algorithm GENIE --test_envs 1 --dataset VLCS --steps 15000
 [37m[36mINFO[0m[0m 01/19 08:20:30 | Unique name: 250119_04-26-21_B_VLCS1_iter
-[37m[36mINFO[0m[0m 01/19 08:20:30 | Out path: train_output/VLCS/gsnr1224/[1]/250119_04-26-21_B_VLCS1_iter
-[37m[36mINFO[0m[0m 01/19 08:20:30 | Algorithm: gsnr1224
+[37m[36mINFO[0m[0m 01/19 08:20:30 | Out path: train_output/VLCS/GENIE/[1]/250119_04-26-21_B_VLCS1_iter
+[37m[36mINFO[0m[0m 01/19 08:20:30 | Algorithm: GENIE
 [37m[36mINFO[0m[0m 01/19 08:20:30 | Dataset: VLCS
 [37m[36mINFO[0m[0m 01/19 08:20:30 | Max test_in: 0.6936

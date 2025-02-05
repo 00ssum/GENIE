@@ -1,4 +1,4 @@
-[37m[36mINFO[0m[0m 01/14 17:57:14 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm gnsr1224 --test_envs 3 --dataset DomainNet --trial_seed 0 --hparams_seed 0
+[37m[36mINFO[0m[0m 01/14 17:57:14 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm GENIE --test_envs 3 --dataset DomainNet --trial_seed 0 --hparams_seed 0
 Environment:
 	Python: 3.8.10
 	PyTorch: 1.13.1+cu117
@@ -8,7 +8,7 @@ Environment:
 	NumPy: 1.24.4
 	PIL: 9.4.0
 Args:
-	algorithm: gnsr1224
+	algorithm: GENIE
 	attn_tune: False
 	auto_lr: False
 	checkpoint_freq: None
@@ -28,8 +28,8 @@ Args:
 	model_save: None
 	mpa: False
 	name: resnet50_sgd
-	out_dir: train_output/DomainNet/gnsr1224/[3]/250114_17-57-14_resnet50_sgd
-	out_root: train_output/DomainNet/gnsr1224/[3]
+	out_dir: train_output/DomainNet/GENIE/[3]/250114_17-57-14_resnet50_sgd
+	out_root: train_output/DomainNet/GENIE/[3]
 	prebuild_loader: False
 	resume_path: checkpoints/
 	seed: 0
@@ -108,9 +108,9 @@ Dataset:
 [37m[36mINFO[0m[0m 01/15 05:23:17 | last (inD) = 62.463%
 [37m[36mINFO[0m[0m 01/15 05:23:17 | training-domain validation (iid, inD) = 62.463%
 [37m[36mINFO[0m[0m 01/15 05:23:17 | === Summary ===
-[37m[36mINFO[0m[0m 01/15 05:23:17 | Command: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm gnsr1224 --test_envs 3 --dataset DomainNet --trial_seed 0 --hparams_seed 0
+[37m[36mINFO[0m[0m 01/15 05:23:17 | Command: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm GENIE --test_envs 3 --dataset DomainNet --trial_seed 0 --hparams_seed 0
 [37m[36mINFO[0m[0m 01/15 05:23:17 | Unique name: 250114_17-57-14_resnet50_sgd
-[37m[36mINFO[0m[0m 01/15 05:23:17 | Out path: train_output/DomainNet/gnsr1224/[3]/250114_17-57-14_resnet50_sgd
-[37m[36mINFO[0m[0m 01/15 05:23:17 | Algorithm: gnsr1224
+[37m[36mINFO[0m[0m 01/15 05:23:17 | Out path: train_output/DomainNet/GENIE/[3]/250114_17-57-14_resnet50_sgd
+[37m[36mINFO[0m[0m 01/15 05:23:17 | Algorithm: GENIE
 [37m[36mINFO[0m[0m 01/15 05:23:17 | Dataset: DomainNet
 [37m[36mINFO[0m[0m 01/15 05:23:17 | Max test_in: 0.1446

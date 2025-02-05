@@ -1,4 +1,4 @@
-[37m[36mINFO[0m[0m 01/15 23:48:15 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py B_PACS2_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 16 --algorithm gsnr1224 --test_envs 2 --dataset PACS --steps 15000
+[37m[36mINFO[0m[0m 01/15 23:48:15 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py B_PACS2_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 16 --algorithm GENIE --test_envs 2 --dataset PACS --steps 15000
 Environment:
 	Python: 3.8.10
 	PyTorch: 1.13.1+cu117
@@ -8,7 +8,7 @@ Environment:
 	NumPy: 1.24.4
 	PIL: 10.4.0
 Args:
-	algorithm: gsnr1224
+	algorithm: GENIE
 	attn_tune: False
 	auto_lr: False
 	checkpoint_freq: None
@@ -28,8 +28,8 @@ Args:
 	model_save: None
 	mpa: False
 	name: B_PACS2_iter
-	out_dir: train_output/PACS/gsnr1224/[2]/250115_23-48-15_B_PACS2_iter
-	out_root: train_output/PACS/gsnr1224/[2]
+	out_dir: train_output/PACS/GENIE/[2]/250115_23-48-15_B_PACS2_iter
+	out_root: train_output/PACS/GENIE/[2]
 	prebuild_loader: False
 	resume_path: checkpoints/
 	seed: 0
@@ -166,9 +166,9 @@ Dataset:
 [37m[36mINFO[0m[0m 01/16 01:05:14 | last (inD) = 96.525%
 [37m[36mINFO[0m[0m 01/16 01:05:14 | training-domain validation (iid, inD) = 96.700%
 [37m[36mINFO[0m[0m 01/16 01:05:14 | === Summary ===
-[37m[36mINFO[0m[0m 01/16 01:05:14 | Command: /jsm0707/DomainBed/Large-scale/train_all.py B_PACS2_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 16 --algorithm gsnr1224 --test_envs 2 --dataset PACS --steps 15000
+[37m[36mINFO[0m[0m 01/16 01:05:14 | Command: /jsm0707/DomainBed/Large-scale/train_all.py B_PACS2_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 16 --algorithm GENIE --test_envs 2 --dataset PACS --steps 15000
 [37m[36mINFO[0m[0m 01/16 01:05:14 | Unique name: 250115_23-48-15_B_PACS2_iter
-[37m[36mINFO[0m[0m 01/16 01:05:14 | Out path: train_output/PACS/gsnr1224/[2]/250115_23-48-15_B_PACS2_iter
-[37m[36mINFO[0m[0m 01/16 01:05:14 | Algorithm: gsnr1224
+[37m[36mINFO[0m[0m 01/16 01:05:14 | Out path: train_output/PACS/GENIE/[2]/250115_23-48-15_B_PACS2_iter
+[37m[36mINFO[0m[0m 01/16 01:05:14 | Algorithm: GENIE
 [37m[36mINFO[0m[0m 01/16 01:05:14 | Dataset: PACS
 [37m[36mINFO[0m[0m 01/16 01:05:14 | Max test_in: 0.9888

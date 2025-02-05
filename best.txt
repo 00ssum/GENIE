@@ -1,26 +1,26 @@
 #PACS
-# python3 -m train_all B_PACS0_iter config/resnet50_sgd.yaml --trial_seed 2 --hparams_seed 9 --algorithm gsnr1224 --test_envs 0 --dataset PACS --steps 15000
-# python3 -m train_all B_PACS1_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 12 --algorithm gsnr1224 --test_envs 1 --dataset PACS --steps 15000
-# python3 -m train_all B_PACS2_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 16 --algorithm gsnr1224 --test_envs 2 --dataset PACS --steps 15000
-# python3 -m train_all B_PACS3_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 18 --algorithm gsnr1224 --test_envs 3 --dataset PACS --steps 15000
+# python3 -m train_all B_PACS0_iter config/resnet50_sgd.yaml --trial_seed 2 --hparams_seed 9 --algorithm GENIE --test_envs 0 --dataset PACS --steps 15000
+# python3 -m train_all B_PACS1_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 12 --algorithm GENIE --test_envs 1 --dataset PACS --steps 15000
+# python3 -m train_all B_PACS2_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 16 --algorithm GENIE --test_envs 2 --dataset PACS --steps 15000
+# python3 -m train_all B_PACS3_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 18 --algorithm GENIE --test_envs 3 --dataset PACS --steps 15000
 
 ## officehome
-# python3 -m train_all B_OfficeHome0_iter config/resnet50_sgd.yaml --trial_seed 2 --hparams_seed 10 --algorithm gsnr1224 --test_envs 0 --dataset OfficeHome --steps 15000
-# python3 -m train_all B_OfficeHome1_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 9 --algorithm gsnr1224 --test_envs 1 --dataset OfficeHome --steps 15000
-# python3 -m train_all B_OfficeHome2_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 15 --algorithm gsnr1224 --test_envs 2 --dataset OfficeHome --steps 15000
-# python3 -m train_all B_OfficeHome3_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 20 --algorithm gsnr1224 --test_envs 3 --dataset OfficeHome --steps 15000
+# python3 -m train_all B_OfficeHome0_iter config/resnet50_sgd.yaml --trial_seed 2 --hparams_seed 10 --algorithm GENIE --test_envs 0 --dataset OfficeHome --steps 15000
+# python3 -m train_all B_OfficeHome1_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 9 --algorithm GENIE --test_envs 1 --dataset OfficeHome --steps 15000
+# python3 -m train_all B_OfficeHome2_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 15 --algorithm GENIE --test_envs 2 --dataset OfficeHome --steps 15000
+# python3 -m train_all B_OfficeHome3_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 20 --algorithm GENIE --test_envs 3 --dataset OfficeHome --steps 15000
 
 #VLCS
-python3 -m train_all B_VLCS0_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 0 --algorithm gsnr1224 --test_envs 0 --dataset VLCS --steps 15000
-python3 -m train_all B_VLCS1_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 2 --algorithm gsnr1224 --test_envs 1 --dataset VLCS --steps 15000
-python3 -m train_all B_VLCS0_iter config/resnet50_sgd.yaml --trial_seed 2 --hparams_seed 10 --algorithm gsnr1224 --test_envs 2 --dataset VLCS --steps 15000
-python3 -m train_all B_VLCS1_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 18 --algorithm gsnr1224 --test_envs 3 --dataset VLCS --steps 15000
+python3 -m train_all B_VLCS0_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 0 --algorithm GENIE --test_envs 0 --dataset VLCS --steps 15000
+python3 -m train_all B_VLCS1_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 2 --algorithm GENIE --test_envs 1 --dataset VLCS --steps 15000
+python3 -m train_all B_VLCS0_iter config/resnet50_sgd.yaml --trial_seed 2 --hparams_seed 10 --algorithm GENIE --test_envs 2 --dataset VLCS --steps 15000
+python3 -m train_all B_VLCS1_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 18 --algorithm GENIE --test_envs 3 --dataset VLCS --steps 15000
 
 #Terra
-python3 -m train_all B_Tera0_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 19 --algorithm gsnr1224 --test_envs 0 --dataset TerraIncognita --steps 15000
-python3 -m train_all B_Tera1_iter config/resnet50_sgd.yaml --trial_seed 2 --hparams_seed 14 --algorithm gsnr1224 --test_envs 1 --dataset TerraIncognita --steps 15000
-python3 -m train_all B_Tera2_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 10 --algorithm gsnr1224 --test_envs 2 --dataset TerraIncognita --steps 15000
-python3 -m train_all B_Tera3_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 10 --algorithm gsnr1224 --test_envs 3 --dataset TerraIncognita --steps 15000
+python3 -m train_all B_Tera0_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 19 --algorithm GENIE --test_envs 0 --dataset TerraIncognita --steps 15000
+python3 -m train_all B_Tera1_iter config/resnet50_sgd.yaml --trial_seed 2 --hparams_seed 14 --algorithm GENIE --test_envs 1 --dataset TerraIncognita --steps 15000
+python3 -m train_all B_Tera2_iter config/resnet50_sgd.yaml --trial_seed 1 --hparams_seed 10 --algorithm GENIE --test_envs 2 --dataset TerraIncognita --steps 15000
+python3 -m train_all B_Tera3_iter config/resnet50_sgd.yaml --trial_seed 0 --hparams_seed 10 --algorithm GENIE --test_envs 3 --dataset TerraIncognita --steps 15000
 
 
 -------------------------------------

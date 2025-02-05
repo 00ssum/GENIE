@@ -1,4 +1,4 @@
-[37m[36mINFO[0m[0m 01/16 02:16:53 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py B_OfficeHome0_iter config/resnet50_sgd.yaml --trial_seed 2 --hparams_seed 10 --algorithm gsnr1224 --test_envs 0 --dataset OfficeHome --steps 15000
+[37m[36mINFO[0m[0m 01/16 02:16:53 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py B_OfficeHome0_iter config/resnet50_sgd.yaml --trial_seed 2 --hparams_seed 10 --algorithm GENIE --test_envs 0 --dataset OfficeHome --steps 15000
 Environment:
 	Python: 3.8.10
 	PyTorch: 1.13.1+cu117
@@ -8,7 +8,7 @@ Environment:
 	NumPy: 1.24.4
 	PIL: 10.4.0
 Args:
-	algorithm: gsnr1224
+	algorithm: GENIE
 	attn_tune: False
 	auto_lr: False
 	checkpoint_freq: None
@@ -28,8 +28,8 @@ Args:
 	model_save: None
 	mpa: False
 	name: B_OfficeHome0_iter
-	out_dir: train_output/OfficeHome/gsnr1224/[0]/250116_02-16-53_B_OfficeHome0_iter
-	out_root: train_output/OfficeHome/gsnr1224/[0]
+	out_dir: train_output/OfficeHome/GENIE/[0]/250116_02-16-53_B_OfficeHome0_iter
+	out_root: train_output/OfficeHome/GENIE/[0]
 	prebuild_loader: False
 	resume_path: checkpoints/
 	seed: 0
@@ -166,9 +166,9 @@ Dataset:
 [37m[36mINFO[0m[0m 01/16 06:16:33 | last (inD) = 84.803%
 [37m[36mINFO[0m[0m 01/16 06:16:33 | training-domain validation (iid, inD) = 85.262%
 [37m[36mINFO[0m[0m 01/16 06:16:34 | === Summary ===
-[37m[36mINFO[0m[0m 01/16 06:16:34 | Command: /jsm0707/DomainBed/Large-scale/train_all.py B_OfficeHome0_iter config/resnet50_sgd.yaml --trial_seed 2 --hparams_seed 10 --algorithm gsnr1224 --test_envs 0 --dataset OfficeHome --steps 15000
+[37m[36mINFO[0m[0m 01/16 06:16:34 | Command: /jsm0707/DomainBed/Large-scale/train_all.py B_OfficeHome0_iter config/resnet50_sgd.yaml --trial_seed 2 --hparams_seed 10 --algorithm GENIE --test_envs 0 --dataset OfficeHome --steps 15000
 [37m[36mINFO[0m[0m 01/16 06:16:34 | Unique name: 250116_02-16-53_B_OfficeHome0_iter
-[37m[36mINFO[0m[0m 01/16 06:16:34 | Out path: train_output/OfficeHome/gsnr1224/[0]/250116_02-16-53_B_OfficeHome0_iter
-[37m[36mINFO[0m[0m 01/16 06:16:34 | Algorithm: gsnr1224
+[37m[36mINFO[0m[0m 01/16 06:16:34 | Out path: train_output/OfficeHome/GENIE/[0]/250116_02-16-53_B_OfficeHome0_iter
+[37m[36mINFO[0m[0m 01/16 06:16:34 | Algorithm: GENIE
 [37m[36mINFO[0m[0m 01/16 06:16:34 | Dataset: OfficeHome
 [37m[36mINFO[0m[0m 01/16 06:16:34 | Max test_in: 0.6730

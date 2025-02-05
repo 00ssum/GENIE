@@ -116,7 +116,7 @@ def save_colorbar_only(vmin, vmax, cmap, save_path):
 #     plot_saved_cumulative_gradient_change_with_normalization(input_path, save_path)
 
 # dataset = "VLCS"
-# alg = "gsnr1224"
+# alg = "GENIE"
 # envs = ["[0]", "[1]","[2]", "[3]"]
 # files = [
 #     "250118_21-07-58_B_VLCS0_iter",
@@ -159,7 +159,7 @@ def save_colorbar_only(vmin, vmax, cmap, save_path):
 #     plot_saved_cumulative_gradient_change_with_normalization(input_path, save_path)
 
 # dataset = "PACS"
-# alg = "gsnr1224"
+# alg = "GENIE"
 # envs = ["[0]", "[1]","[2]", "[3]"]
 # files = [
 #     "250118_21-07-58_B_VLCS0_iter",

@@ -1,4 +1,4 @@
-#python3 -m train_all resnet50_gsnr config/resnet50_sgd.yaml --algorithm gsnr1224 --test_envs 0 --dataset PACS
+#python3 -m train_all resnet50_gsnr config/resnet50_sgd.yaml --algorithm GENIE --test_envs 0 --dataset PACS
 
 
 import argparse

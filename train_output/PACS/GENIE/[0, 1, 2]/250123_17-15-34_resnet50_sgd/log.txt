@@ -1,4 +1,4 @@
-[37m[36mINFO[0m[0m 01/23 17:15:34 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm gsnr1224 --test_envs 0 1 2 --dataset PACS --trial_seed 1 --hparams_seed 9
+[37m[36mINFO[0m[0m 01/23 17:15:34 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm GENIE --test_envs 0 1 2 --dataset PACS --trial_seed 1 --hparams_seed 9
 Environment:
 	Python: 3.8.10
 	PyTorch: 1.13.1+cu117
@@ -8,7 +8,7 @@ Environment:
 	NumPy: 1.24.4
 	PIL: 10.4.0
 Args:
-	algorithm: gsnr1224
+	algorithm: GENIE
 	attn_tune: False
 	auto_lr: False
 	checkpoint_freq: None
@@ -28,8 +28,8 @@ Args:
 	model_save: None
 	mpa: False
 	name: resnet50_sgd
-	out_dir: train_output/PACS/gsnr1224/[0, 1, 2]/250123_17-15-34_resnet50_sgd
-	out_root: train_output/PACS/gsnr1224/[0, 1, 2]
+	out_dir: train_output/PACS/GENIE/[0, 1, 2]/250123_17-15-34_resnet50_sgd
+	out_root: train_output/PACS/GENIE/[0, 1, 2]
 	prebuild_loader: False
 	resume_path: checkpoints/
 	seed: 0
@@ -109,7 +109,7 @@ Dataset:
 [37m[36mINFO[0m[0m 01/23 17:43:59 | 0.643825    0.656333    0.997455    0.971975    0.138269    0.630872    0.621027    0.706290    0.722222    0.594311    0.625749    0.997455    0.971975    4600        52.671756   0.004240    0.205771    26.468072  
 [37m[36mINFO[0m[0m 01/23 17:45:11 | 0.631517    0.633891    0.999046    0.961783    0.109409    0.608908    0.599022    0.702559    0.700855    0.583084    0.601796    0.999046    0.961783    4800        54.961832   0.017952    0.228055    26.128759  
 [37m[36mINFO[0m[0m 01/23 17:46:24 | 0.592379    0.599147    0.991730    0.964331    0.110784    0.541794    0.562347    0.680704    0.675214    0.554641    0.559880    0.991730    0.964331    5000        57.251908   0.043305    0.237354    25.509635  
-[37m[36mINFO[0m[0m 01/23 17:46:24 | Cumulative gradient change saved at train_output/PACS/gsnr1224/[0, 1, 2]/250123_17-15-34_resnet50_sgd/sum_cumulative_g_change.npy
+[37m[36mINFO[0m[0m 01/23 17:46:24 | Cumulative gradient change saved at train_output/PACS/GENIE/[0, 1, 2]/250123_17-15-34_resnet50_sgd/sum_cumulative_g_change.npy
 [37m[36mINFO[0m[0m 01/23 17:46:25 | ---
 [37m[36mINFO[0m[0m 01/23 17:46:25 | test-domain validation(oracle) = 65.926%
 [37m[36mINFO[0m[0m 01/23 17:46:25 | training-domain validation(iid) = 68.650%
@@ -117,8 +117,8 @@ Dataset:
 [37m[36mINFO[0m[0m 01/23 17:46:25 | last (inD) = 96.433%
 [37m[36mINFO[0m[0m 01/23 17:46:25 | training-domain validation (iid, inD) = 97.580%
 [37m[36mINFO[0m[0m 01/23 17:46:25 | === Summary ===
-[37m[36mINFO[0m[0m 01/23 17:46:25 | Command: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm gsnr1224 --test_envs 0 1 2 --dataset PACS --trial_seed 1 --hparams_seed 9
+[37m[36mINFO[0m[0m 01/23 17:46:25 | Command: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm GENIE --test_envs 0 1 2 --dataset PACS --trial_seed 1 --hparams_seed 9
 [37m[36mINFO[0m[0m 01/23 17:46:25 | Unique name: 250123_17-15-34_resnet50_sgd
-[37m[36mINFO[0m[0m 01/23 17:46:25 | Out path: train_output/PACS/gsnr1224/[0, 1, 2]/250123_17-15-34_resnet50_sgd
-[37m[36mINFO[0m[0m 01/23 17:46:25 | Algorithm: gsnr1224
+[37m[36mINFO[0m[0m 01/23 17:46:25 | Out path: train_output/PACS/GENIE/[0, 1, 2]/250123_17-15-34_resnet50_sgd
+[37m[36mINFO[0m[0m 01/23 17:46:25 | Algorithm: GENIE
 [37m[36mINFO[0m[0m 01/23 17:46:25 | Dataset: PACS

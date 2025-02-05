@@ -1,4 +1,4 @@
-[37m[36mINFO[0m[0m 01/19 23:25:54 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm gsnr1224 --test_envs 4 --dataset DomainNet --trial_seed 0 --hparams_seed 1
+[37m[36mINFO[0m[0m 01/19 23:25:54 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm GENIE --test_envs 4 --dataset DomainNet --trial_seed 0 --hparams_seed 1
 Environment:
 	Python: 3.8.10
 	PyTorch: 1.13.1+cu117
@@ -8,7 +8,7 @@ Environment:
 	NumPy: 1.24.4
 	PIL: 10.4.0
 Args:
-	algorithm: gsnr1224
+	algorithm: GENIE
 	attn_tune: False
 	auto_lr: False
 	checkpoint_freq: None
@@ -28,8 +28,8 @@ Args:
 	model_save: None
 	mpa: False
 	name: resnet50_sgd
-	out_dir: train_output/DomainNet/gsnr1224/[4]/250119_23-25-54_resnet50_sgd
-	out_root: train_output/DomainNet/gsnr1224/[4]
+	out_dir: train_output/DomainNet/GENIE/[4]/250119_23-25-54_resnet50_sgd
+	out_root: train_output/DomainNet/GENIE/[4]
 	prebuild_loader: False
 	resume_path: checkpoints/
 	seed: 0
@@ -101,7 +101,7 @@ Dataset:
 [37m[36mINFO[0m[0m 01/20 08:27:23 | 0.638077    0.642112    0.678801    0.588743    1.907468    0.831706    0.734338    0.498789    0.332623    0.714580    0.635785    0.623420    0.607478    0.638077    0.642112    0.725512    0.633490    13000       10.466445   1.423672    0.330327    2023.74804 
 [37m[36mINFO[0m[0m 01/20 09:06:29 | 0.644271    0.645321    0.687842    0.593265    1.927179    0.839939    0.743273    0.511966    0.337177    0.723470    0.637722    0.630855    0.613072    0.644271    0.645321    0.732980    0.635081    14000       11.271556   1.376381    0.332508    2013.01135 
 [37m[36mINFO[0m[0m 01/20 09:45:50 | 0.637903    0.639828    0.692320    0.592523    1.962096    0.844691    0.740987    0.524029    0.340471    0.729075    0.639244    0.627536    0.608638    0.637903    0.639828    0.736271    0.633273    15000       12.076667   1.326691    0.333743    2026.65480 
-[37m[36mINFO[0m[0m 01/20 09:45:50 | Cumulative gradient change saved at train_output/DomainNet/gsnr1224/[4]/250119_23-25-54_resnet50_sgd/sum_cumulative_g_change.npy
+[37m[36mINFO[0m[0m 01/20 09:45:50 | Cumulative gradient change saved at train_output/DomainNet/GENIE/[4]/250119_23-25-54_resnet50_sgd/sum_cumulative_g_change.npy
 [37m[36mINFO[0m[0m 01/20 09:45:52 | ---
 [37m[36mINFO[0m[0m 01/20 09:45:52 | test-domain validation(oracle) = 64.427%
 [37m[36mINFO[0m[0m 01/20 09:45:52 | training-domain validation(iid) = 64.427%
@@ -109,9 +109,9 @@ Dataset:
 [37m[36mINFO[0m[0m 01/20 09:45:52 | last (inD) = 59.252%
 [37m[36mINFO[0m[0m 01/20 09:45:52 | training-domain validation (iid, inD) = 59.327%
 [37m[36mINFO[0m[0m 01/20 09:45:52 | === Summary ===
-[37m[36mINFO[0m[0m 01/20 09:45:52 | Command: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm gsnr1224 --test_envs 4 --dataset DomainNet --trial_seed 0 --hparams_seed 1
+[37m[36mINFO[0m[0m 01/20 09:45:52 | Command: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm GENIE --test_envs 4 --dataset DomainNet --trial_seed 0 --hparams_seed 1
 [37m[36mINFO[0m[0m 01/20 09:45:52 | Unique name: 250119_23-25-54_resnet50_sgd
-[37m[36mINFO[0m[0m 01/20 09:45:52 | Out path: train_output/DomainNet/gsnr1224/[4]/250119_23-25-54_resnet50_sgd
-[37m[36mINFO[0m[0m 01/20 09:45:52 | Algorithm: gsnr1224
+[37m[36mINFO[0m[0m 01/20 09:45:52 | Out path: train_output/DomainNet/GENIE/[4]/250119_23-25-54_resnet50_sgd
+[37m[36mINFO[0m[0m 01/20 09:45:52 | Algorithm: GENIE
 [37m[36mINFO[0m[0m 01/20 09:45:52 | Dataset: DomainNet
 [37m[36mINFO[0m[0m 01/20 09:45:52 | Max test_in: 0.6443

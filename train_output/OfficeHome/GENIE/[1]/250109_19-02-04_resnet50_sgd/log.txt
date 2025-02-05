@@ -1,4 +1,4 @@
-[37m[36mINFO[0m[0m 01/09 19:02:04 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm gsnr1224 --test_envs 1 --dataset OfficeHome --trial_seed 1 --hparams_seed 9
+[37m[36mINFO[0m[0m 01/09 19:02:04 | Command :: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm GENIE --test_envs 1 --dataset OfficeHome --trial_seed 1 --hparams_seed 9
 Environment:
 	Python: 3.8.10
 	PyTorch: 1.13.1+cu117
@@ -8,7 +8,7 @@ Environment:
 	NumPy: 1.24.4
 	PIL: 10.4.0
 Args:
-	algorithm: gsnr1224
+	algorithm: GENIE
 	attn_tune: False
 	auto_lr: False
 	checkpoint_freq: None
@@ -28,8 +28,8 @@ Args:
 	model_save: None
 	mpa: False
 	name: resnet50_sgd
-	out_dir: train_output/OfficeHome/gsnr1224/[1]/250109_19-02-04_resnet50_sgd
-	out_root: train_output/OfficeHome/gsnr1224/[1]
+	out_dir: train_output/OfficeHome/GENIE/[1]/250109_19-02-04_resnet50_sgd
+	out_root: train_output/OfficeHome/GENIE/[1]
 	prebuild_loader: False
 	resume_path: checkpoints/
 	seed: 0
@@ -116,9 +116,9 @@ Dataset:
 [37m[36mINFO[0m[0m 01/09 20:49:33 | last (inD) = 84.973%
 [37m[36mINFO[0m[0m 01/09 20:49:33 | training-domain validation (iid, inD) = 85.415%
 [37m[36mINFO[0m[0m 01/09 20:49:34 | === Summary ===
-[37m[36mINFO[0m[0m 01/09 20:49:34 | Command: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm gsnr1224 --test_envs 1 --dataset OfficeHome --trial_seed 1 --hparams_seed 9
+[37m[36mINFO[0m[0m 01/09 20:49:34 | Command: /jsm0707/DomainBed/Large-scale/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm GENIE --test_envs 1 --dataset OfficeHome --trial_seed 1 --hparams_seed 9
 [37m[36mINFO[0m[0m 01/09 20:49:34 | Unique name: 250109_19-02-04_resnet50_sgd
-[37m[36mINFO[0m[0m 01/09 20:49:34 | Out path: train_output/OfficeHome/gsnr1224/[1]/250109_19-02-04_resnet50_sgd
-[37m[36mINFO[0m[0m 01/09 20:49:34 | Algorithm: gsnr1224
+[37m[36mINFO[0m[0m 01/09 20:49:34 | Out path: train_output/OfficeHome/GENIE/[1]/250109_19-02-04_resnet50_sgd
+[37m[36mINFO[0m[0m 01/09 20:49:34 | Algorithm: GENIE
 [37m[36mINFO[0m[0m 01/09 20:49:34 | Dataset: OfficeHome
 [37m[36mINFO[0m[0m 01/09 20:49:34 | Max test_in: 0.5590

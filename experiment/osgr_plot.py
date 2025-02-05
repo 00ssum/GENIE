@@ -97,7 +97,7 @@ if __name__ == "__main__":
     path = os.path.join("/jsm0707/GENIE/train_output", dataset)
 
     folder_list = [ 
-        os.path.join(path, "gsnr1224", env, GENIE),
+        os.path.join(path, "GENIE", env, GENIE),
         os.path.join(path, "ERM", env, SGD), 
         os.path.join(path, "ERM", env, Adam), 
         os.path.join(path, "SAM", env, SAM)
@@ -105,7 +105,7 @@ if __name__ == "__main__":
     ] 
 
     label_map = {
-        os.path.join(path, "gsnr1224", env, GENIE): "GENIE",
+        os.path.join(path, "GENIE", env, GENIE): "GENIE",
         os.path.join(path, "ERM", env, SGD): "SGD",
         os.path.join(path, "ERM", env, Adam): "Adam",
         os.path.join(path, "SAM", env, SAM): "SAM"
