@@ -22,7 +22,7 @@ def delete_folders_without_jsonl(target_dir, dry_run=True):
                     print(f"⚠ 삭제 실패: {folder} → {e}")
 
 # 실행할 디렉토리 리스트 생성
-base_directory = "/jsm0707/Large-scale/train_output/VLCS/CORAL"
+base_directory = "/jsm0707/GENIE/train_output/VLCS/CORAL"
 sub_dirs = [f"[{i}]" for i in range(0, 4)]  # ["[1]", "[2]", "[3]", "[4]"]
 
 for sub_dir in sub_dirs:

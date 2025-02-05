@@ -97,7 +97,7 @@ def save_to_excel_by_dataset_algorithm_and_env(results_by_dataset_and_algorithm,
                 print(f"Saved {dataset} -> {algorithm} -> {subfolder or 'default'} -> target_env {target_env} results to {output_file}")
 
 # Base path to the dataset directory
-base_path = "/jsm0707/Large-scale/train_output"
+base_path = "/jsm0707/GENIE/train_output"
 output_dir = "output/results"
 algorithms = ["gsnr1224", "CORAL", "GENIE", "ERM", "SAM","RSC", "MIRO"]
 datasets = ["PACS", "OfficeHome", "TerraIncognita", "VLCS"]

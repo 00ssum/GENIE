@@ -94,7 +94,7 @@ if __name__ == "__main__":
     Adam = "250120_14-32-48_ERM0_Adam_iter"
     SAM = "250125_02-32-15_resnet50_sgd"
 
-    path = os.path.join("/jsm0707/Large-scale/train_output", dataset)
+    path = os.path.join("/jsm0707/GENIE/train_output", dataset)
 
     folder_list = [ 
         os.path.join(path, "gsnr1224", env, GENIE),

@@ -56,7 +56,7 @@ files = [
 
 
 for env, file in zip(envs, files):
-    file_path=os.path.join("/jsm0707/Large-scale/train_output/",dataset, alg, env, file)
+    file_path=os.path.join("/jsm0707/GENIE/train_output/",dataset, alg, env, file)
     log_file_path=os.path.join(file_path, "log.txt" )
     with open(log_file_path, 'r') as f:
         log_data = f.readlines()

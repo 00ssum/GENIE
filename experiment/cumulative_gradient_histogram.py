@@ -82,7 +82,7 @@ def save_colorbar_only(vmin, vmax, cmap, save_path):
 #     "250121_10-15-58_ERM3_SGD_iter"]
 
 # for env, file in zip(envs, files):
-#     file_path = os.path.join("/jsm0707/Large-scale/train_output/", dataset, alg, env, file)
+#     file_path = os.path.join("/jsm0707/GENIE/train_output/", dataset, alg, env, file)
 #     input_path = os.path.join(file_path, "sum_cumulative_g_change.npy")
 #     save_path = os.path.join(file_path, "output",  "cumulative_gradient_change_nor.png")
 #     plot_saved_cumulative_gradient_change_with_normalization(input_path, save_path)
@@ -96,7 +96,7 @@ def save_colorbar_only(vmin, vmax, cmap, save_path):
 #     "250121_02-26-00_ERM2_Adam_iter",
 #     "250121_10-08-38_ERM3_Adam_iter"]
 # for env, file in zip(envs, files):
-#     file_path = os.path.join("/jsm0707/Large-scale/train_output/", dataset, alg, env, file)
+#     file_path = os.path.join("/jsm0707/GENIE/train_output/", dataset, alg, env, file)
 #     input_path = os.path.join(file_path, "sum_cumulative_g_change.npy")
 #     save_path = os.path.join(file_path, "output",  "cumulative_gradient_change_nor.png")
 #     plot_saved_cumulative_gradient_change_with_normalization(input_path, save_path)
@@ -110,7 +110,7 @@ def save_colorbar_only(vmin, vmax, cmap, save_path):
 #     "250125_15-12-40_resnet50_sgd",
 #     "250125_23-14-38_resnet50_sgd"]
 # for env, file in zip(envs, files):
-#     file_path = os.path.join("/jsm0707/Large-scale/train_output/", dataset, alg, env, file)
+#     file_path = os.path.join("/jsm0707/GENIE/train_output/", dataset, alg, env, file)
 #     input_path = os.path.join(file_path, "sum_cumulative_g_change.npy")
 #     save_path = os.path.join(file_path, "output",  "cumulative_gradient_change_nor.png")
 #     plot_saved_cumulative_gradient_change_with_normalization(input_path, save_path)
@@ -124,7 +124,7 @@ def save_colorbar_only(vmin, vmax, cmap, save_path):
 #     "250119_08-20-34_B_VLCS2_iter",
 #     "250119_14-19-26_B_VLCS3_iter"]
 # for env, file in zip(envs, files):
-#     file_path = os.path.join("/jsm0707/Large-scale/train_output/", dataset, alg, env, file)
+#     file_path = os.path.join("/jsm0707/GENIE/train_output/", dataset, alg, env, file)
 #     input_path = os.path.join(file_path, "sum_cumulative_g_change.npy")
 #     save_path = os.path.join(file_path, "output",  "cumulative_gradient_change_nor.png")
 #     plot_saved_cumulative_gradient_change_with_normalization(input_path, save_path)
@@ -139,7 +139,7 @@ def save_colorbar_only(vmin, vmax, cmap, save_path):
 #     "250116_17-58-06_resnet50_adam (iter15000)",
 #     "250116_19-23-12_resnet50_adam (iter15000)"]
 # for env, file in zip(envs, files):
-#     file_path = os.path.join("/jsm0707/Large-scale/train_output/", dataset, alg, env, file)
+#     file_path = os.path.join("/jsm0707/GENIE/train_output/", dataset, alg, env, file)
 #     input_path = os.path.join(file_path, "sum_cumulative_g_change.npy")
 #     save_path = os.path.join(file_path, "output",  "cumulative_gradient_change_nor.png")
 #     plot_saved_cumulative_gradient_change_with_normalization(input_path, save_path)
@@ -153,7 +153,7 @@ def save_colorbar_only(vmin, vmax, cmap, save_path):
 #     "250125_07-02-14_resnet50_sgd",
 #     "250125_09-20-05_resnet50_sgd"]
 # for env, file in zip(envs, files):
-#     file_path = os.path.join("/jsm0707/Large-scale/train_output/", dataset, alg, env, file)
+#     file_path = os.path.join("/jsm0707/GENIE/train_output/", dataset, alg, env, file)
 #     input_path = os.path.join(file_path, "sum_cumulative_g_change.npy")
 #     save_path = os.path.join(file_path, "output",  "cumulative_gradient_change_nor.png")
 #     plot_saved_cumulative_gradient_change_with_normalization(input_path, save_path)
@@ -167,7 +167,7 @@ def save_colorbar_only(vmin, vmax, cmap, save_path):
 #     "250119_08-20-34_B_VLCS2_iter",
 #     "250119_14-19-26_B_VLCS3_iter"]
 # for env, file in zip(envs, files):
-#     file_path = os.path.join("/jsm0707/Large-scale/train_output/", dataset, alg, env, file)
+#     file_path = os.path.join("/jsm0707/GENIE/train_output/", dataset, alg, env, file)
 #     input_path = os.path.join(file_path, "sum_cumulative_g_change.npy")
 #     save_path = os.path.join(file_path, "output",  "cumulative_gradient_change_nor.png")
 #     plot_saved_cumulative_gradient_change_with_normalization(input_path, save_path)
@@ -183,7 +183,7 @@ files = [
     "250125_16-09-14_resnet50_sgd"]
 
 for env, file in zip(envs, files):
-    file_path = os.path.join("/jsm0707/Large-scale/train_output/", dataset, alg, env, file)
+    file_path = os.path.join("/jsm0707/GENIE/train_output/", dataset, alg, env, file)
     input_path = os.path.join(file_path, "sum_cumulative_g_change.npy")
     save_path = os.path.join(file_path, "output",  "cumulative_gradient_change_nor.png")
     plot_saved_cumulative_gradient_change_with_normalization(input_path, save_path)
