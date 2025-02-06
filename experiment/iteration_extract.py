@@ -45,14 +45,14 @@ def parse_validation_iid(step, log_lines):
     return None
 
 
-dataset = "TerraIncognita"
-alg = "GENIE"
+dataset = "OfficeHome"
+alg = "ERM"
 envs = ["[0]", "[1]", "[2]", "[3]"]
 files = [
-    "250118_03-11-08_B_Tera0_iter",
-    "250118_07-46-52_B_Tera1_iter",
-    "250118_12-12-36_B_Tera2_iter",
-    "250118_16-41-03_B_Tera3_iter"]
+    "250205_19-29-17_resnet50_sgd",
+    "250206_01-07-12_resnet50_sgd",
+    "250206_06-26-05_resnet50_sgd",
+    "250206_11-23-42_resnet50_sgd"]
 
 
 for env, file in zip(envs, files):
