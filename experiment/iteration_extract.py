@@ -47,12 +47,10 @@ def parse_validation_iid(step, log_lines):
 
 dataset = "OfficeHome"
 alg = "ERM"
-envs = ["[0]", "[1]", "[2]", "[3]"]
+envs = ["[2]", "[3]"]
 files = [
-    "250205_19-29-17_resnet50_sgd",
-    "250206_01-07-12_resnet50_sgd",
-    "250206_06-26-05_resnet50_sgd",
-    "250206_11-23-42_resnet50_sgd"]
+    "250207_06-48-39_resnet50_adam (iter15000)",
+    "250207_11-40-41_resnet50_adam (iter15000)"]
 
 
 for env, file in zip(envs, files):
