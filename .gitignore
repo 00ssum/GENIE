@@ -25,3 +25,4 @@ err.txt
 done
 *.npy
 data
+*.xlsx

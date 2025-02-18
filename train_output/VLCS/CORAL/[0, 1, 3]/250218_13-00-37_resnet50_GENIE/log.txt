@@ -1,0 +1,81 @@
+[37m[36mINFO[0m[0m 02/18 13:00:37 | Command :: /jsm0707/GENIE/train_all.py resnet50_GENIE config/resnet50_GENIE.yaml --algorithm CORAL --test_envs 0 1 3 --dataset VLCS --trial_seed 0 --hparams_seed 16
+Environment:
+	Python: 3.8.10
+	PyTorch: 1.13.1+cu117
+	Torchvision: 0.14.1+cu117
+	CUDA: 11.7
+	CUDNN: 8500
+	NumPy: 1.24.4
+	PIL: 10.4.0
+Args:
+	algorithm: CORAL
+	attn_tune: False
+	auto_lr: False
+	checkpoint_freq: None
+	configs: ['config/resnet50_GENIE.yaml']
+	data_dir: data
+	dataset: VLCS
+	debug: False
+	deterministic: True
+	dump_scores: False
+	dump_similarities: False
+	evalmode: all
+	evaluate: False
+	full_data: False
+	holdout_fraction: 0.2
+	hparams_seed: 16
+	in_domain: False
+	model_save: None
+	mpa: False
+	name: resnet50_GENIE
+	out_dir: train_output/VLCS/CORAL/[0, 1, 3]/250218_13-00-37_resnet50_GENIE
+	out_root: train_output/VLCS/CORAL/[0, 1, 3]
+	prebuild_loader: False
+	resume_path: checkpoints/
+	seed: 0
+	show: False
+	small_bs: False
+	steps: None
+	tb_freq: 10
+	test_envs: [0, 1, 3]
+	trial_seed: 0
+	unique_name: 250218_13-00-37_resnet50_GENIE
+	warmup: False
+	work_dir: .
+HParams:
+	data_augmentation: True
+	val_augment: False
+	resnet18: False
+	linear_steps: -1
+	resnet_dropout: 0.0
+	class_balanced: False
+	optimizer: genie
+	freeze_bn: False
+	pretrained: True
+	lr: 4.249952708249365e-05
+	batch_size: 17
+	weight_decay: 9.786966598736845e-06
+	mmd_gamma: 1.0088701382180452
+	swad: False
+	test_batchsize: 128
+	model: resnet50
+	feat_layers: stem_block
+	attn_tune: False
+	auto_lr: False
+Dataset:
+	[VLCS] #envs=4, #classes=5
+	env0: C (#1415)
+	env1: L (#2656)
+	env2: S (#3282)
+	env3: V (#3376)
+
+[37m[36mINFO[0m[0m 02/18 13:00:37 | n_steps = 5001
+[37m[36mINFO[0m[0m 02/18 13:00:37 | checkpoint_freq = 200
+[37m[36mINFO[0m[0m 02/18 13:00:37 | n_steps is updated to 5001 => 5001 for checkpointing
+[37m[36mINFO[0m[0m 02/18 13:00:37 | 
+[37m[36mINFO[0m[0m 02/18 13:00:37 | Testenv name escaping te_C_L_V -> te_C_L_V
+[37m[36mINFO[0m[0m 02/18 13:00:37 | Test envs = [0, 1, 3], name = te_C_L_V
+[37m[36mINFO[0m[0m 02/18 13:00:37 | Train environments: [2], Test environments: [0, 1, 3]
+[37m[36mINFO[0m[0m 02/18 13:00:37 | Batch sizes for each domain: [0, 0, 17, 0] (total=17)
+[37m[36mINFO[0m[0m 02/18 13:00:37 | steps-per-epoch for each domain: 154.47 -> min = 154.47
+[37m[36mINFO[0m[0m 02/18 13:00:39 | # of params = 23518277
