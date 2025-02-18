@@ -26,3 +26,4 @@ done
 *.npy
 data
 *.xlsx
+results/

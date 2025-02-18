@@ -106,3 +106,17 @@ Dataset:
 [37m[36mINFO[0m[0m 02/18 12:50:19 | 0.581070    0.568565    0.781962    0.783037    0.641701    0.581070    0.568565    0.797792    0.802260    0.791562    0.793451    0.756533    0.753401    4400        19.395466   0.797670    0.247165    181.753247 
 [37m[36mINFO[0m[0m 02/18 12:54:01 | 0.436594    0.447257    0.777293    0.775032    0.650354    0.436594    0.447257    0.800873    0.809450    0.772985    0.773300    0.758020    0.742347    4600        20.277078   0.766916    0.180776    185.830655 
 [37m[36mINFO[0m[0m 02/18 12:57:54 | 0.597153    0.602321    0.783964    0.772676    0.637122    0.597153    0.602321    0.800745    0.805342    0.793766    0.772040    0.757383    0.740646    4800        21.158690   0.747933    0.186089    195.673591 
+[37m[36mINFO[0m[0m 02/18 13:01:44 | 0.562879    0.570675    0.781533    0.785487    0.579348    0.562879    0.570675    0.799718    0.802773    0.784950    0.790932    0.759932    0.762755    5000        22.040302   0.754533    0.197083    190.782762 
+[37m[36mINFO[0m[0m 02/18 13:01:44 | Cumulative gradient change saved at train_output/TerraIncognita/RSC/[0]/250218_11-24-10_resnet50_GENIE/sum_cumulative_g_change.npy
+[37m[36mINFO[0m[0m 02/18 13:01:46 | ---
+[37m[36mINFO[0m[0m 02/18 13:01:46 | test-domain validation(oracle) = 61.613%
+[37m[36mINFO[0m[0m 02/18 13:01:46 | training-domain validation(iid) = 56.288%
+[37m[36mINFO[0m[0m 02/18 13:01:46 | last = 56.288%
+[37m[36mINFO[0m[0m 02/18 13:01:46 | last (inD) = 78.549%
+[37m[36mINFO[0m[0m 02/18 13:01:46 | training-domain validation (iid, inD) = 78.549%
+[37m[36mINFO[0m[0m 02/18 13:01:46 | === Summary ===
+[37m[36mINFO[0m[0m 02/18 13:01:46 | Command: /jsm0707/GENIE/train_all.py resnet50_GENIE config/resnet50_GENIE.yaml --algorithm RSC --test_envs 0 --dataset TerraIncognita --trial_seed 0 --hparams_seed 3
+[37m[36mINFO[0m[0m 02/18 13:01:46 | Unique name: 250218_11-24-10_resnet50_GENIE
+[37m[36mINFO[0m[0m 02/18 13:01:46 | Out path: train_output/TerraIncognita/RSC/[0]/250218_11-24-10_resnet50_GENIE
+[37m[36mINFO[0m[0m 02/18 13:01:46 | Algorithm: RSC
+[37m[36mINFO[0m[0m 02/18 13:01:46 | Dataset: TerraIncognita
