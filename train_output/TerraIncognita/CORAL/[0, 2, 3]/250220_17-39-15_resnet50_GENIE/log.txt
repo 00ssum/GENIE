@@ -1,0 +1,83 @@
+[37m[36mINFO[0m[0m 02/20 17:39:15 | Command :: /jsm0707/GENIE/train_all.py resnet50_GENIE config/resnet50_GENIE.yaml --algorithm CORAL --test_envs 0 2 3 --dataset TerraIncognita --trial_seed 0 --hparams_seed 4
+Environment:
+	Python: 3.8.10
+	PyTorch: 1.13.1+cu117
+	Torchvision: 0.14.1+cu117
+	CUDA: 11.7
+	CUDNN: 8500
+	NumPy: 1.24.4
+	PIL: 10.4.0
+Args:
+	algorithm: CORAL
+	attn_tune: False
+	auto_lr: False
+	checkpoint_freq: None
+	configs: ['config/resnet50_GENIE.yaml']
+	data_dir: data
+	dataset: TerraIncognita
+	debug: False
+	deterministic: True
+	dump_scores: False
+	dump_similarities: False
+	evalmode: all
+	evaluate: False
+	full_data: False
+	holdout_fraction: 0.2
+	hparams_seed: 4
+	in_domain: False
+	model_save: None
+	mpa: False
+	name: resnet50_GENIE
+	out_dir: train_output/TerraIncognita/CORAL/[0, 2, 3]/250220_17-39-15_resnet50_GENIE
+	out_root: train_output/TerraIncognita/CORAL/[0, 2, 3]
+	prebuild_loader: False
+	resume_path: checkpoints/
+	seed: 0
+	show: False
+	small_bs: False
+	steps: None
+	tb_freq: 10
+	test_envs: [0, 2, 3]
+	trial_seed: 0
+	unique_name: 250220_17-39-15_resnet50_GENIE
+	warmup: False
+	work_dir: .
+HParams:
+	data_augmentation: True
+	val_augment: False
+	resnet18: False
+	linear_steps: -1
+	resnet_dropout: 0.5
+	class_balanced: False
+	optimizer: genie
+	freeze_bn: False
+	pretrained: True
+	lr: 2.0793009436922532e-05
+	batch_size: 30
+	weight_decay: 0.0007980067844361917
+	mmd_gamma: 0.10537155511080055
+	swad: False
+	test_batchsize: 128
+	model: resnet50
+	feat_layers: stem_block
+	attn_tune: False
+	auto_lr: False
+Dataset:
+	[TerraIncognita] #envs=4, #classes=10
+	env0: L100 (#4741)
+	env1: L38 (#9736)
+	env2: L43 (#3970)
+	env3: L46 (#5883)
+
+[37m[36mINFO[0m[0m 02/20 17:39:15 | n_steps = 5001
+[37m[36mINFO[0m[0m 02/20 17:39:15 | checkpoint_freq = 200
+[37m[36mINFO[0m[0m 02/20 17:39:15 | n_steps is updated to 5001 => 5001 for checkpointing
+[37m[36mINFO[0m[0m 02/20 17:39:15 | 
+[37m[36mINFO[0m[0m 02/20 17:39:15 | Testenv name escaping te_L100_L43_L46 -> te_L100_L43_L46
+[37m[36mINFO[0m[0m 02/20 17:39:15 | Test envs = [0, 2, 3], name = te_L100_L43_L46
+[37m[36mINFO[0m[0m 02/20 17:39:15 | Train environments: [1], Test environments: [0, 2, 3]
+[37m[36mINFO[0m[0m 02/20 17:39:15 | Batch sizes for each domain: [0, 30, 0, 0] (total=30)
+[37m[36mINFO[0m[0m 02/20 17:39:15 | steps-per-epoch for each domain: 259.63 -> min = 259.63
+[37m[36mINFO[0m[0m 02/20 17:39:17 | # of params = 23528522
+[37m[36mINFO[0m[0m 02/20 17:42:18 | test_in     test_out    train_in    train_out   tr_outloss  env0_in     env0_out    env1_in     env1_out    env2_in     env2_out    env3_in     env3_out    step        epoch       loss        penalty     step_time   eval_time  
+[37m[36mINFO[0m[0m 02/20 17:42:18 | 0.203084    0.213519    0.455514    0.481253    1.988809    0.200633    0.208861    0.455514    0.481253    0.186398    0.221662    0.222222    0.210034    0           0.000000    2.229659    0.000000    2.503680    177.756309 

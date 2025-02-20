@@ -1,0 +1,93 @@
+[37m[36mINFO[0m[0m 02/20 17:03:49 | Command :: /jsm0707/GENIE/train_all.py resnet50_GENIE config/resnet50_GENIE.yaml --algorithm RSC --test_envs 1 2 3 --dataset TerraIncognita --trial_seed 1 --hparams_seed 20
+Environment:
+	Python: 3.8.10
+	PyTorch: 1.13.1+cu117
+	Torchvision: 0.14.1+cu117
+	CUDA: 11.7
+	CUDNN: 8500
+	NumPy: 1.24.4
+	PIL: 10.4.0
+Args:
+	algorithm: RSC
+	attn_tune: False
+	auto_lr: False
+	checkpoint_freq: None
+	configs: ['config/resnet50_GENIE.yaml']
+	data_dir: data
+	dataset: TerraIncognita
+	debug: False
+	deterministic: True
+	dump_scores: False
+	dump_similarities: False
+	evalmode: all
+	evaluate: False
+	full_data: False
+	holdout_fraction: 0.2
+	hparams_seed: 20
+	in_domain: False
+	model_save: None
+	mpa: False
+	name: resnet50_GENIE
+	out_dir: train_output/TerraIncognita/RSC/[1, 2, 3]/250220_17-03-49_resnet50_GENIE
+	out_root: train_output/TerraIncognita/RSC/[1, 2, 3]
+	prebuild_loader: False
+	resume_path: checkpoints/
+	seed: 0
+	show: False
+	small_bs: False
+	steps: None
+	tb_freq: 10
+	test_envs: [1, 2, 3]
+	trial_seed: 1
+	unique_name: 250220_17-03-49_resnet50_GENIE
+	warmup: False
+	work_dir: .
+HParams:
+	data_augmentation: True
+	val_augment: False
+	resnet18: False
+	linear_steps: -1
+	resnet_dropout: 0.1
+	class_balanced: False
+	optimizer: genie
+	freeze_bn: False
+	pretrained: True
+	lr: 1.6701621650738547e-05
+	batch_size: 28
+	weight_decay: 2.09977539257237e-05
+	rsc_f_drop_factor: 0.3326621721270262
+	rsc_b_drop_factor: 0.45527554959503275
+	swad: False
+	test_batchsize: 128
+	model: resnet50
+	feat_layers: stem_block
+	attn_tune: False
+	auto_lr: False
+Dataset:
+	[TerraIncognita] #envs=4, #classes=10
+	env0: L100 (#4741)
+	env1: L38 (#9736)
+	env2: L43 (#3970)
+	env3: L46 (#5883)
+
+[37m[36mINFO[0m[0m 02/20 17:03:49 | n_steps = 5001
+[37m[36mINFO[0m[0m 02/20 17:03:49 | checkpoint_freq = 200
+[37m[36mINFO[0m[0m 02/20 17:03:49 | n_steps is updated to 5001 => 5001 for checkpointing
+[37m[36mINFO[0m[0m 02/20 17:03:49 | 
+[37m[36mINFO[0m[0m 02/20 17:03:49 | Testenv name escaping te_L38_L43_L46 -> te_L38_L43_L46
+[37m[36mINFO[0m[0m 02/20 17:03:49 | Test envs = [1, 2, 3], name = te_L38_L43_L46
+[37m[36mINFO[0m[0m 02/20 17:03:49 | Train environments: [0], Test environments: [1, 2, 3]
+[37m[36mINFO[0m[0m 02/20 17:03:49 | Batch sizes for each domain: [28, 0, 0, 0] (total=28)
+[37m[36mINFO[0m[0m 02/20 17:03:49 | steps-per-epoch for each domain: 135.46 -> min = 135.46
+[37m[36mINFO[0m[0m 02/20 17:03:51 | # of params = 23528522
+[37m[36mINFO[0m[0m 02/20 17:06:53 | test_in     test_out    train_in    train_out   tr_outloss  env0_in     env0_out    env1_in     env1_out    env2_in     env2_out    env3_in     env3_out    step        epoch       loss        step_time   eval_time  
+[37m[36mINFO[0m[0m 02/20 17:06:53 | 0.120335    0.111127    0.517005    0.541139    1.897660    0.517005    0.541139    0.019515    0.022085    0.098237    0.094458    0.243255    0.216837    0           0.000000    4.455353    1.198378    181.213376 
+[37m[36mINFO[0m[0m 02/20 17:10:45 | 0.140957    0.127399    0.615608    0.639241    1.127067    0.615608    0.639241    0.054564    0.052388    0.120592    0.109572    0.247716    0.220238    200         1.476404    1.615748    0.269790    177.852269 
+[37m[36mINFO[0m[0m 02/20 17:14:39 | 0.175338    0.158191    0.544688    0.578059    1.078077    0.544688    0.578059    0.029015    0.034926    0.186398    0.164987    0.310601    0.274660    400         2.952808    1.367147    0.283413    176.929353 
+[37m[36mINFO[0m[0m 02/20 17:18:34 | 0.140081    0.133385    0.586343    0.602321    1.084376    0.586343    0.602321    0.074849    0.084232    0.100441    0.098237    0.244954    0.217687    600         4.429212    1.340996    0.261593    183.164109 
+[37m[36mINFO[0m[0m 02/20 17:22:25 | 0.141638    0.136066    0.584761    0.602321    1.076823    0.584761    0.602321    0.080370    0.091423    0.100441    0.098237    0.244105    0.218537    800         5.905616    1.280519    0.233703    183.962004 
+[37m[36mINFO[0m[0m 02/20 17:26:12 | 0.140948    0.129120    0.597680    0.619198    1.092658    0.597680    0.619198    0.064193    0.062147    0.111146    0.103275    0.247504    0.221939    1000        7.382020    1.252496    0.267250    174.160530 
+[37m[36mINFO[0m[0m 02/20 17:29:57 | 0.132271    0.122907    0.603744    0.611814    1.074582    0.603744    0.611814    0.025549    0.029276    0.130982    0.120907    0.240280    0.218537    1200        8.858423    1.234751    0.288550    167.286412 
+[37m[36mINFO[0m[0m 02/20 17:33:41 | 0.137775    0.126771    0.607698    0.614979    1.094010    0.607698    0.614979    0.030171    0.032871    0.140113    0.127204    0.243042    0.220238    1400        10.334827   1.220352    0.307446    162.056225 
+[37m[36mINFO[0m[0m 02/20 17:37:17 | 0.135095    0.123301    0.596098    0.610759    1.034078    0.596098    0.610759    0.036975    0.036980    0.146725    0.132242    0.221585    0.200680    1600        11.811231   1.213283    0.242200    167.889864 
+[37m[36mINFO[0m[0m 02/20 17:40:56 | 0.139232    0.127547    0.596625    0.610759    0.994338    0.596625    0.610759    0.033766    0.034412    0.146411    0.132242    0.237519    0.215986    1800        13.287635   1.196759    0.220618    175.149850 
