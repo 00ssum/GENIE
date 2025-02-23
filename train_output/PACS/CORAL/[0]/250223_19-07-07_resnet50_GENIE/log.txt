@@ -1,0 +1,89 @@
+[37m[36mINFO[0m[0m 02/23 19:07:07 | Command :: /jsm0707/GENIE/train_all.py resnet50_GENIE config/resnet50_GENIE.yaml --algorithm CORAL --test_envs 0 --dataset PACS --trial_seed 1 --hparams_seed 20
+Environment:
+	Python: 3.8.10
+	PyTorch: 1.13.1+cu117
+	Torchvision: 0.14.1+cu117
+	CUDA: 11.7
+	CUDNN: 8500
+	NumPy: 1.24.4
+	PIL: 10.4.0
+Args:
+	algorithm: CORAL
+	attn_tune: False
+	auto_lr: False
+	checkpoint_freq: None
+	configs: ['config/resnet50_GENIE.yaml']
+	data_dir: data
+	dataset: PACS
+	debug: False
+	deterministic: True
+	dump_scores: False
+	dump_similarities: False
+	evalmode: all
+	evaluate: False
+	full_data: False
+	holdout_fraction: 0.2
+	hparams_seed: 20
+	in_domain: False
+	model_save: None
+	mpa: False
+	name: resnet50_GENIE
+	out_dir: train_output/PACS/CORAL/[0]/250223_19-07-07_resnet50_GENIE
+	out_root: train_output/PACS/CORAL/[0]
+	prebuild_loader: False
+	resume_path: checkpoints/
+	seed: 0
+	show: False
+	small_bs: False
+	steps: None
+	tb_freq: 10
+	test_envs: [0]
+	trial_seed: 1
+	unique_name: 250223_19-07-07_resnet50_GENIE
+	warmup: False
+	work_dir: .
+HParams:
+	data_augmentation: True
+	val_augment: False
+	resnet18: False
+	linear_steps: -1
+	resnet_dropout: 0.1
+	class_balanced: False
+	optimizer: genie
+	freeze_bn: False
+	pretrained: True
+	lr: 1.6701621650738547e-05
+	batch_size: 28
+	weight_decay: 2.09977539257237e-05
+	mmd_gamma: 2.1411578651095096
+	swad: False
+	test_batchsize: 128
+	model: resnet50
+	feat_layers: stem_block
+	attn_tune: False
+	auto_lr: False
+Dataset:
+	[PACS] #envs=4, #classes=7
+	env0: A (#2048)
+	env1: C (#2344)
+	env2: P (#1670)
+	env3: S (#3929)
+
+[37m[36mINFO[0m[0m 02/23 19:07:07 | n_steps = 5001
+[37m[36mINFO[0m[0m 02/23 19:07:07 | checkpoint_freq = 200
+[37m[36mINFO[0m[0m 02/23 19:07:07 | n_steps is updated to 5001 => 5001 for checkpointing
+[37m[36mINFO[0m[0m 02/23 19:07:07 | 
+[37m[36mINFO[0m[0m 02/23 19:07:07 | Testenv name escaping te_A -> te_A
+[37m[36mINFO[0m[0m 02/23 19:07:07 | Test envs = [0], name = te_A
+[37m[36mINFO[0m[0m 02/23 19:07:07 | Train environments: [1, 2, 3], Test environments: [0]
+[37m[36mINFO[0m[0m 02/23 19:07:07 | Batch sizes for each domain: [0, 28, 28, 28] (total=84)
+[37m[36mINFO[0m[0m 02/23 19:07:07 | steps-per-epoch for each domain: 67.00, 47.71, 112.29 -> min = 47.71
+[37m[36mINFO[0m[0m 02/23 19:07:09 | # of params = 23522375
+[37m[36mINFO[0m[0m 02/23 19:07:42 | test_in     test_out    train_in    train_out   tr_outloss  env0_in     env0_out    env1_in     env1_out    env2_in     env2_out    env3_in     env3_out    step        epoch       loss        penalty     step_time   eval_time  
+[37m[36mINFO[0m[0m 02/23 19:07:42 | 0.172056    0.207824    0.194341    0.206487    1.897365    0.172056    0.207824    0.205224    0.258547    0.192365    0.173653    0.185433    0.187261    0           0.000000    2.039613    0.086564    1.269018    31.931084  
+[37m[36mINFO[0m[0m 02/23 19:09:12 | 0.835265    0.850856    0.951551    0.951419    0.158330    0.835265    0.850856    0.939765    0.925214    0.990269    0.994012    0.924618    0.935032    200         4.191617    0.432575    0.034083    0.284802    33.291494  
+[37m[36mINFO[0m[0m 02/23 19:10:55 | 0.804149    0.799511    0.974305    0.963772    0.122409    0.804149    0.799511    0.968550    0.940171    0.994760    0.997006    0.959606    0.954140    400         8.383234    0.123238    0.019157    0.346742    33.077459  
+[37m[36mINFO[0m[0m 02/23 19:12:37 | 0.883466    0.897311    0.979995    0.966363    0.111894    0.883466    0.897311    0.982942    0.963675    0.997754    0.994012    0.959288    0.941401    600         12.574850   0.081538    0.015404    0.304052    41.175967  
+[37m[36mINFO[0m[0m 02/23 19:14:10 | 0.821232    0.828851    0.987245    0.962228    0.102837    0.821232    0.828851    0.985608    0.952991    0.997754    0.991018    0.978372    0.942675    800         16.766467   0.060219    0.013284    0.305036    31.678546  
+[37m[36mINFO[0m[0m 02/23 19:15:45 | 0.860891    0.853301    0.989131    0.970169    0.087877    0.860891    0.853301    0.989339    0.952991    1.000000    0.997006    0.978053    0.960510    1000        20.958084   0.044502    0.012194    0.252781    44.866832  
+[37m[36mINFO[0m[0m 02/23 19:17:12 | 0.860891    0.870416    0.994796    0.978702    0.071912    0.860891    0.870416    0.995203    0.972222    1.000000    0.997006    0.989186    0.966879    1200        25.149701   0.028811    0.011045    0.276622    31.780026  
