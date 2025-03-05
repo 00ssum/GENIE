@@ -1,0 +1,96 @@
+[37m[36mINFO[0m[0m 03/05 16:48:58 | Command :: /jsm0707/GENIE/train_all.py B_vit_alg_ge config/clip_vitb16_sgd.yaml --trial_seed 2 --hparams_seed 9 --algorithm GENIE --test_envs 0 --dataset PACS
+Environment:
+	Python: 3.8.10
+	PyTorch: 1.13.1+cu117
+	Torchvision: 0.14.1+cu117
+	CUDA: 11.7
+	CUDNN: 8500
+	NumPy: 1.24.4
+	PIL: 10.4.0
+Args:
+	algorithm: GENIE
+	attn_tune: False
+	auto_lr: False
+	checkpoint_freq: None
+	configs: ['config/clip_vitb16_sgd.yaml']
+	data_dir: data
+	dataset: PACS
+	debug: False
+	deterministic: True
+	dump_scores: False
+	dump_similarities: False
+	evalmode: all
+	evaluate: False
+	full_data: False
+	holdout_fraction: 0.2
+	hparams_seed: 9
+	in_domain: False
+	model_save: None
+	mpa: False
+	name: B_vit_alg_ge
+	out_dir: train_output/PACS/GENIE/[0]/250305_16-48-58_B_vit_alg_ge
+	out_root: train_output/PACS/GENIE/[0]
+	prebuild_loader: False
+	resume_path: checkpoints/
+	seed: 0
+	show: False
+	small_bs: False
+	steps: None
+	tb_freq: 10
+	test_envs: [0]
+	trial_seed: 2
+	unique_name: 250305_16-48-58_B_vit_alg_ge
+	warmup: False
+	work_dir: .
+HParams:
+	data_augmentation: True
+	val_augment: False
+	resnet18: False
+	linear_steps: -1
+	resnet_dropout: 0.0
+	class_balanced: False
+	optimizer: sgd
+	freeze_bn: False
+	pretrained: True
+	lr: 2.716671579524612e-05
+	batch_size: 29
+	weight_decay: 1.71368232883332e-06
+	momentum: 0.9092933546128503
+	convergence_rate: 0.02426611940613899
+	moving_avg: 0.947722940872739
+	p: 0.5933807106679234
+	swad: False
+	swad_kwargs: 
+	  n_converge: 3
+	  n_tolerance: 6
+	  tolerance_ratio: 0.3
+	test_batchsize: 128
+	model: clip_vit-b16
+	feat_layers: stem_block
+	ld: 0.1
+	lr_mult: 10.0
+	attn_tune: False
+	auto_lr: False
+Dataset:
+	[PACS] #envs=4, #classes=7
+	env0: A (#2048)
+	env1: C (#2344)
+	env2: P (#1670)
+	env3: S (#3929)
+
+[37m[36mINFO[0m[0m 03/05 16:48:58 | n_steps = 5001
+[37m[36mINFO[0m[0m 03/05 16:48:58 | checkpoint_freq = 200
+[37m[36mINFO[0m[0m 03/05 16:48:58 | n_steps is updated to 5001 => 5001 for checkpointing
+[37m[36mINFO[0m[0m 03/05 16:48:58 | 
+[37m[36mINFO[0m[0m 03/05 16:48:58 | Testenv name escaping te_A -> te_A
+[37m[36mINFO[0m[0m 03/05 16:48:58 | Test envs = [0], name = te_A
+[37m[36mINFO[0m[0m 03/05 16:48:58 | Train environments: [1, 2, 3], Test environments: [0]
+[37m[36mINFO[0m[0m 03/05 16:48:58 | Batch sizes for each domain: [0, 29, 29, 29] (total=87)
+[37m[36mINFO[0m[0m 03/05 16:48:58 | steps-per-epoch for each domain: 64.69, 46.07, 108.41 -> min = 46.07
+[37m[36mINFO[0m[0m 03/05 16:49:00 | # of params = 86196231
+[37m[36mINFO[0m[0m 03/05 16:49:33 | test_in     test_out    train_in    train_out   tr_outloss  env0_in     env0_out    env1_in     env1_out    env2_in     env2_out    env3_in     env3_out    step        epoch       loss        step_time   eval_time  
+[37m[36mINFO[0m[0m 03/05 16:49:33 | 0.186699    0.176039    0.159382    0.155164    1.942038    0.186699    0.176039    0.167377    0.160256    0.114521    0.107784    0.196247    0.197452    0           0.000000    1.954243    1.082758    31.773057  
+[37m[36mINFO[0m[0m 03/05 16:51:27 | 0.420988    0.405868    0.651662    0.696791    0.824217    0.420988    0.405868    0.655650    0.720085    0.729042    0.766467    0.570293    0.603822    200         4.341317    1.387574    0.411521    32.056052  
+[37m[36mINFO[0m[0m 03/05 16:53:20 | 0.525930    0.501222    0.779249    0.784337    0.587755    0.525930    0.501222    0.783582    0.799145    0.873503    0.844311    0.680662    0.709554    400         8.682635    0.714146    0.413239    29.985911  
+[37m[36mINFO[0m[0m 03/05 16:55:15 | 0.475290    0.523227    0.839695    0.809184    0.518370    0.475290    0.523227    0.875800    0.854701    0.918413    0.886228    0.724873    0.686624    600         13.023952   0.518980    0.415636    32.008163  
+[37m[36mINFO[0m[0m 03/05 16:57:08 | 0.465528    0.479218    0.848125    0.834260    0.485470    0.465528    0.479218    0.887527    0.882479    0.904940    0.871257    0.751908    0.749045    800         17.365269   0.401057    0.413917    30.609272  
