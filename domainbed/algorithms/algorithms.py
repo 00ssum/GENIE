@@ -91,7 +91,7 @@ class ERM_ori(Algorithm):
     """
 
     def __init__(self, input_shape, num_classes, num_domains, hparams):
-        super(ERM, self).__init__(input_shape, num_classes, num_domains, hparams)
+        super(ERM_ori, self).__init__(input_shape, num_classes, num_domains, hparams)
         self.featurizer = networks.Featurizer(input_shape, self.hparams)
         self.classifier = nn.Linear(self.featurizer.n_outputs, num_classes)
         self.network = nn.Sequential(self.featurizer, self.classifier)
@@ -122,6 +122,132 @@ class ERM_ori(Algorithm):
         return self.network(x)
     
 # #-----------------------------------------------------------
+class ERM_new(Algorithm):
+    def __init__(self, input_shape, num_classes, num_domains, hparams):
+        super(ERM_new, self).__init__(input_shape, num_classes, num_domains, hparams)
+        self.featurizer = networks.Featurizer(input_shape, self.hparams)
+        self.classifier = nn.Linear(self.featurizer.n_outputs, num_classes)
+        self.network = nn.Sequential(self.featurizer, self.classifier)
+
+        self.optimizer = get_optimizer(
+            hparams["optimizer"],
+            self.network.parameters(),
+            lr=self.hparams["lr"],
+            weight_decay=self.hparams["weight_decay"])
+
+        self.pre_grads = None
+        self.cumulative_g_change = None
+        self.cumulative_weight_volume= None
+        
+
+    def compute_weight_volume_sampling(self, weight_matrix, num_samples=1000):
+        """
+        샘플링 기반 Weight Volume 계산 함수.
+
+        Parameters:
+            weight_matrix (torch.Tensor): 신경망 가중치 행렬
+            num_samples (int): 샘플 개수 (default: 1000)
+
+        Returns:
+            float: Weight Volume 값
+        """
+        W = weight_matrix.detach().cpu().numpy()
+
+        if len(W.shape) == 4:  # (out_channels, in_channels, kernel_height, kernel_width)
+            W = W.reshape(W.shape[0], -1)  # (out_channels, flattened_kernel)
+
+
+        # 가중치에서 일부만 샘플링
+        num_features = W.shape[1] if len(W.shape) > 1 else W.shape[0]
+        sampled_indices = np.random.choice(num_features, size=min(num_features, num_samples), replace=False)
+        sampled_weights = W[:, sampled_indices] if len(W.shape) > 1 else W[sampled_indices]
+
+        # 샘플링된 가중치에 대해 공분산 행렬 계산
+        Sigma = np.cov(sampled_weights, rowvar=False)
+
+        # 공분산 행렬이 특이행렬이 되는 경우를 방지하기 위해 작은 값 추가
+        Sigma += np.eye(Sigma.shape[0]) * 1e-5  
+
+        # 결정식(determinant) 계산
+        det_Sigma = np.linalg.det(Sigma)
+
+        # 공분산 행렬의 대각 원소 곱 계산
+        diag_prod = np.prod(np.diag(Sigma))
+
+        # Weight Volume 계산
+        weight_volume = det_Sigma / diag_prod if diag_prod != 0 else 0
+
+        return weight_volume
+
+    def update(self, x, y, **kwargs):
+        all_x = torch.cat(x)
+        all_y = torch.cat(y)
+        loss = F.cross_entropy(self.predict(all_x), all_y)
+        self.optimizer.zero_grad()
+        loss.backward()
+
+        grads = torch.cat([param.grad.view(-1) for param in self.network.parameters() if param.grad is not None])
+
+        grads_list = []
+        for p in self.network.parameters():
+            if p.grad is None:
+                grads_list.append(torch.zeros_like(p).view(-1))
+            else:
+                grads_list.append(p.grad.view(-1))
+
+
+        grads_2 = torch.cat(grads_list)
+        if self.pre_grads is None:
+            g_change = torch.zeros_like(grads_2)
+        else:
+            g_change = torch.abs(grads_2 - self.pre_grads)
+
+        if self.cumulative_g_change is None:
+            self.cumulative_g_change = g_change.clone()
+        else:
+            self.cumulative_g_change += g_change
+
+        self.pre_grads = grads_2.clone()
+
+        # weight_volumes = {}
+        # for name, param in self.network.named_parameters():
+        #     if "weight" in name and len(param.shape) > 1:  # Fully Connected / Conv 필터만 고려
+        #         weight_volumes[name] = self.compute_weight_volume_sampling(param)
+        #         print("weight_volumes[name]",name, weight_volumes[name])
+
+        weight_volumes_list = []
+        for name, param in self.network.named_parameters():
+            if "weight" in name and len(param.shape) > 1:  # Fully Connected / Conv 필터만 고려
+                wv = self.compute_weight_volume_sampling(param)
+                weight_volumes_list.append(wv)
+
+        # 한 스텝에서 하나의 Weight Volume 값 반환 (평균)
+        if len(weight_volumes_list) > 0:
+            weight_volume = sum(weight_volumes_list) / len(weight_volumes_list)
+        else:
+            weight_volume = 0
+
+        # ✅ Weight Volume 누적 저장
+        if self.cumulative_weight_volume is None:
+            self.cumulative_weight_volume = torch.tensor(weight_volume)
+        else:
+            self.cumulative_weight_volume += torch.tensor(weight_volume)
+
+        print("weight_volume: ", weight_volume)
+        print(self.cumulative_weight_volume)
+
+        self.optimizer.step()
+
+        return {
+            "loss": loss.item(),
+            "grads": grads,
+            "cumulative_g_change": self.cumulative_g_change
+        }
+
+    def predict(self, x):
+        return self.network(x)
+    
+
 class ERM(Algorithm):
     def __init__(self, input_shape, num_classes, num_domains, hparams):
         super(ERM, self).__init__(input_shape, num_classes, num_domains, hparams)

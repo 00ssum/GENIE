@@ -179,8 +179,6 @@ def train(test_envs, args, hparams, n_steps, checkpoint_freq, logger, writer, ta
         #  "training-domain validation (inD)": tr_val_best_indomain,
         #}
 
-
-
         # swad_algorithm = swad.get_final_model()
         # if hparams["freeze_bn"] is False:
         #     n_steps = 500 if not args.debug else 10
@@ -230,8 +228,7 @@ def train(test_envs, args, hparams, n_steps, checkpoint_freq, logger, writer, ta
         if "cumulative_g_change" in step_vals:
             cumulative_g_change = step_vals["cumulative_g_change"]
             del step_vals["cumulative_g_change"]
-
-
+            
         for key, val in step_vals.items():
             checkpoint_vals[key].append(val)
         checkpoint_vals["step_time"].append(time.time() - step_start_time)
@@ -356,7 +353,7 @@ def train(test_envs, args, hparams, n_steps, checkpoint_freq, logger, writer, ta
         np.save(save_path, cumulative_g_change.cpu().numpy())
         logger.info(f"Cumulative gradient change saved at {save_path}")
         save_cumulative_gradient_change(cumulative_g_change, save_path=args.out_dir / "cumulative_gradient_change.png")
-
+    
     # find best
     ret = {}
     if not args.mpa:
