@@ -110,3 +110,17 @@ Dataset:
 [37m[36mINFO[0m[0m 03/11 20:46:14 | 0.221197    0.232068    0.566427    0.572064    1.171137    0.221197    0.232068    0.657337    0.665126    0.545025    0.562972    0.496919    0.488095    4400        12.468514   1.218169    0.145442    164.453915 
 [37m[36mINFO[0m[0m 03/11 20:49:51 | 0.197996    0.206751    0.568772    0.574477    1.163929    0.197996    0.206751    0.660290    0.671289    0.541247    0.545340    0.504780    0.506803    4600        13.035264   1.203379    0.217636    173.647646 
 [37m[36mINFO[0m[0m 03/11 20:53:25 | 0.214606    0.222574    0.575696    0.581227    1.151209    0.214606    0.222574    0.664399    0.692861    0.551322    0.549118    0.511366    0.501701    4800        13.602015   1.183743    0.219199    169.795042 
+[37m[36mINFO[0m[0m 03/11 20:56:49 | 0.218561    0.229958    0.556738    0.576911    1.147745    0.218561    0.229958    0.658621    0.695942    0.516373    0.539043    0.495220    0.495748    5000        14.168766   1.154739    0.193189    165.382056 
+[37m[36mINFO[0m[0m 03/11 20:56:49 | Cumulative gradient change saved at train_output/TerraIncognita/ERM/[0]/250311_19-28-20_clip_vitb16_GENIE/sum_cumulative_g_change.npy
+[37m[36mINFO[0m[0m 03/11 20:56:53 | ---
+[37m[36mINFO[0m[0m 03/11 20:56:53 | test-domain validation(oracle) = 29.950%
+[37m[36mINFO[0m[0m 03/11 20:56:53 | training-domain validation(iid) = 21.461%
+[37m[36mINFO[0m[0m 03/11 20:56:53 | last = 21.856%
+[37m[36mINFO[0m[0m 03/11 20:56:53 | last (inD) = 57.691%
+[37m[36mINFO[0m[0m 03/11 20:56:53 | training-domain validation (iid, inD) = 58.123%
+[37m[36mINFO[0m[0m 03/11 20:56:53 | === Summary ===
+[37m[36mINFO[0m[0m 03/11 20:56:53 | Command: /jsm0707/GENIE/train_all.py clip_vitb16_GENIE config/clip_vitb16_GENIE.yaml --algorithm ERM --test_envs 0 --dataset TerraIncognita --trial_seed 0 --hparams_seed 12
+[37m[36mINFO[0m[0m 03/11 20:56:53 | Unique name: 250311_19-28-20_clip_vitb16_GENIE
+[37m[36mINFO[0m[0m 03/11 20:56:53 | Out path: train_output/TerraIncognita/ERM/[0]/250311_19-28-20_clip_vitb16_GENIE
+[37m[36mINFO[0m[0m 03/11 20:56:53 | Algorithm: ERM
+[37m[36mINFO[0m[0m 03/11 20:56:53 | Dataset: TerraIncognita

@@ -1,0 +1,88 @@
+[37m[36mINFO[0m[0m 03/12 09:27:24 | Command :: /jsm0707/GENIE/train_all.py clip_vitb16_GENIE config/clip_vitb16_GENIE.yaml --algorithm ERM --test_envs 0 --dataset TerraIncognita --trial_seed 1 --hparams_seed 12
+Environment:
+	Python: 3.8.10
+	PyTorch: 1.13.1+cu117
+	Torchvision: 0.14.1+cu117
+	CUDA: 11.7
+	CUDNN: 8500
+	NumPy: 1.24.4
+	PIL: 10.4.0
+Args:
+	algorithm: ERM
+	attn_tune: False
+	auto_lr: False
+	checkpoint_freq: None
+	configs: ['config/clip_vitb16_GENIE.yaml']
+	data_dir: data
+	dataset: TerraIncognita
+	debug: False
+	deterministic: True
+	dump_scores: False
+	dump_similarities: False
+	evalmode: all
+	evaluate: False
+	full_data: False
+	holdout_fraction: 0.2
+	hparams_seed: 12
+	in_domain: False
+	model_save: None
+	mpa: False
+	name: clip_vitb16_GENIE
+	out_dir: train_output/TerraIncognita/ERM/[0]/250312_09-27-24_clip_vitb16_GENIE
+	out_root: train_output/TerraIncognita/ERM/[0]
+	prebuild_loader: False
+	resume_path: checkpoints/
+	seed: 0
+	show: False
+	small_bs: False
+	steps: None
+	tb_freq: 10
+	test_envs: [0]
+	trial_seed: 1
+	unique_name: 250312_09-27-24_clip_vitb16_GENIE
+	warmup: False
+	work_dir: .
+HParams:
+	data_augmentation: True
+	val_augment: False
+	resnet18: False
+	linear_steps: -1
+	resnet_dropout: 0.1
+	class_balanced: False
+	optimizer: genie
+	freeze_bn: False
+	pretrained: True
+	lr: 3.0065625733392338e-05
+	batch_size: 34
+	weight_decay: 4.89485556145273e-06
+	swad: False
+	swad_kwargs: 
+	  n_converge: 3
+	  n_tolerance: 6
+	  tolerance_ratio: 0.3
+	test_batchsize: 128
+	model: openclip_vit-b16
+	feat_layers: stem_block
+	ld: 0.1
+	lr_mult: 10.0
+	attn_tune: False
+	auto_lr: False
+Dataset:
+	[TerraIncognita] #envs=4, #classes=10
+	env0: L100 (#4741)
+	env1: L38 (#9736)
+	env2: L43 (#3970)
+	env3: L46 (#5883)
+
+[37m[36mINFO[0m[0m 03/12 09:27:24 | n_steps = 5001
+[37m[36mINFO[0m[0m 03/12 09:27:24 | checkpoint_freq = 200
+[37m[36mINFO[0m[0m 03/12 09:27:24 | n_steps is updated to 5001 => 5001 for checkpointing
+[37m[36mINFO[0m[0m 03/12 09:27:24 | 
+[37m[36mINFO[0m[0m 03/12 09:27:24 | Testenv name escaping te_L100 -> te_L100
+[37m[36mINFO[0m[0m 03/12 09:27:24 | Test envs = [0], name = te_L100
+[37m[36mINFO[0m[0m 03/12 09:27:24 | Train environments: [1, 2, 3], Test environments: [0]
+[37m[36mINFO[0m[0m 03/12 09:27:24 | Batch sizes for each domain: [0, 34, 34, 34] (total=102)
+[37m[36mINFO[0m[0m 03/12 09:27:24 | steps-per-epoch for each domain: 229.09, 93.41, 138.44 -> min = 93.41
+[37m[36mINFO[0m[0m 03/12 09:27:26 | # of params = 86197770
+[37m[36mINFO[0m[0m 03/12 09:30:13 | test_in     test_out    train_in    train_out   tr_outloss  env0_in     env0_out    env1_in     env1_out    env2_in     env2_out    env3_in     env3_out    step        epoch       loss        step_time   eval_time  
+[37m[36mINFO[0m[0m 03/12 09:30:13 | 0.208015    0.179325    0.296774    0.299757    2.095817    0.208015    0.179325    0.462062    0.455573    0.204975    0.214106    0.223284    0.229592    0           0.000000    2.425814    1.368719    165.624124 

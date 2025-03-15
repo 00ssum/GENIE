@@ -338,15 +338,21 @@ class GENIE(Algorithm):
         self.classifier = nn.Linear(self.featurizer.n_outputs, num_classes)
         self.network = nn.Sequential(self.featurizer, self.classifier)
 
+        # self.optimizer = get_optimizer(
+        #     hparams["optimizer"],
+        #     self.network.parameters(), 
+        #     lr=self.hparams["lr"], 
+        #     momentum=self.hparams["momentum"], 
+        #     weight_decay=self.hparams['weight_decay'], 
+        #     nesterov=True
+        #     )
         self.optimizer = get_optimizer(
             hparams["optimizer"],
             self.network.parameters(), 
-            lr=self.hparams["lr"], 
-            momentum=self.hparams["momentum"], 
-            weight_decay=self.hparams['weight_decay'], 
-            nesterov=True
+            lr=self.hparams["lr"],
+            weight_decay=self.hparams['weight_decay']
             )
-
+        
         self.prev_state = None
         self.gmean = None
         self.ge2 = None
@@ -448,6 +454,7 @@ class GENIE(Algorithm):
 
     def predict(self, x):
         return self.network(x)
+
 
 class GENIE_Precondition(Algorithm):
     def __init__(self, input_shape, num_classes, num_domains, hparams):

@@ -1,0 +1,88 @@
+[37m[36mINFO[0m[0m 03/12 07:20:59 | Command :: /jsm0707/GENIE/train_all.py clip_vitb16_GENIE config/clip_vitb16_GENIE.yaml --algorithm ERM --test_envs 3 --dataset VLCS --trial_seed 1 --hparams_seed 8
+Environment:
+	Python: 3.8.10
+	PyTorch: 1.13.1+cu117
+	Torchvision: 0.14.1+cu117
+	CUDA: 11.7
+	CUDNN: 8500
+	NumPy: 1.24.4
+	PIL: 10.4.0
+Args:
+	algorithm: ERM
+	attn_tune: False
+	auto_lr: False
+	checkpoint_freq: None
+	configs: ['config/clip_vitb16_GENIE.yaml']
+	data_dir: data
+	dataset: VLCS
+	debug: False
+	deterministic: True
+	dump_scores: False
+	dump_similarities: False
+	evalmode: all
+	evaluate: False
+	full_data: False
+	holdout_fraction: 0.2
+	hparams_seed: 8
+	in_domain: False
+	model_save: None
+	mpa: False
+	name: clip_vitb16_GENIE
+	out_dir: train_output/VLCS/ERM/[3]/250312_07-20-59_clip_vitb16_GENIE
+	out_root: train_output/VLCS/ERM/[3]
+	prebuild_loader: False
+	resume_path: checkpoints/
+	seed: 0
+	show: False
+	small_bs: False
+	steps: None
+	tb_freq: 10
+	test_envs: [3]
+	trial_seed: 1
+	unique_name: 250312_07-20-59_clip_vitb16_GENIE
+	warmup: False
+	work_dir: .
+HParams:
+	data_augmentation: True
+	val_augment: False
+	resnet18: False
+	linear_steps: -1
+	resnet_dropout: 0.0
+	class_balanced: False
+	optimizer: genie
+	freeze_bn: False
+	pretrained: True
+	lr: 3.335053008064847e-05
+	batch_size: 18
+	weight_decay: 0.00011109601170966198
+	swad: False
+	swad_kwargs: 
+	  n_converge: 3
+	  n_tolerance: 6
+	  tolerance_ratio: 0.3
+	test_batchsize: 128
+	model: openclip_vit-b16
+	feat_layers: stem_block
+	ld: 0.1
+	lr_mult: 10.0
+	attn_tune: False
+	auto_lr: False
+Dataset:
+	[VLCS] #envs=4, #classes=5
+	env0: C (#1415)
+	env1: L (#2656)
+	env2: S (#3282)
+	env3: V (#3376)
+
+[37m[36mINFO[0m[0m 03/12 07:20:59 | n_steps = 5001
+[37m[36mINFO[0m[0m 03/12 07:20:59 | checkpoint_freq = 200
+[37m[36mINFO[0m[0m 03/12 07:20:59 | n_steps is updated to 5001 => 5001 for checkpointing
+[37m[36mINFO[0m[0m 03/12 07:20:59 | 
+[37m[36mINFO[0m[0m 03/12 07:20:59 | Testenv name escaping te_V -> te_V
+[37m[36mINFO[0m[0m 03/12 07:20:59 | Test envs = [3], name = te_V
+[37m[36mINFO[0m[0m 03/12 07:20:59 | Train environments: [0, 1, 2], Test environments: [3]
+[37m[36mINFO[0m[0m 03/12 07:20:59 | Batch sizes for each domain: [18, 18, 18, 0] (total=54)
+[37m[36mINFO[0m[0m 03/12 07:20:59 | steps-per-epoch for each domain: 62.89, 118.06, 145.89 -> min = 62.89
+[37m[36mINFO[0m[0m 03/12 07:21:01 | # of params = 86195205
+[37m[36mINFO[0m[0m 03/12 07:23:13 | test_in     test_out    train_in    train_out   tr_outloss  env0_in     env0_out    env1_in     env1_out    env2_in     env2_out    env3_in     env3_out    step        epoch       loss        step_time   eval_time  
+[37m[36mINFO[0m[0m 03/12 07:23:13 | 0.438356    0.407407    0.482983    0.496161    1.351241    0.605124    0.600707    0.474824    0.467043    0.369002    0.420732    0.438356    0.407407    0           0.000000    1.684455    1.336027    130.835044 

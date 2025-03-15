@@ -1,0 +1,92 @@
+[37m[36mINFO[0m[0m 03/12 13:22:16 | Command :: /jsm0707/GENIE/train_all.py clip_vitb16_GENIE config/clip_vitb16_GENIE.yaml --algorithm ERM --test_envs 1 --dataset OfficeHome --trial_seed 1 --hparams_seed 8
+Environment:
+	Python: 3.8.10
+	PyTorch: 1.13.1+cu117
+	Torchvision: 0.14.1+cu117
+	CUDA: 11.7
+	CUDNN: 8500
+	NumPy: 1.24.4
+	PIL: 10.4.0
+Args:
+	algorithm: ERM
+	attn_tune: False
+	auto_lr: False
+	checkpoint_freq: None
+	configs: ['config/clip_vitb16_GENIE.yaml']
+	data_dir: data
+	dataset: OfficeHome
+	debug: False
+	deterministic: True
+	dump_scores: False
+	dump_similarities: False
+	evalmode: all
+	evaluate: False
+	full_data: False
+	holdout_fraction: 0.2
+	hparams_seed: 8
+	in_domain: False
+	model_save: None
+	mpa: False
+	name: clip_vitb16_GENIE
+	out_dir: train_output/OfficeHome/ERM/[1]/250312_13-22-16_clip_vitb16_GENIE
+	out_root: train_output/OfficeHome/ERM/[1]
+	prebuild_loader: False
+	resume_path: checkpoints/
+	seed: 0
+	show: False
+	small_bs: False
+	steps: None
+	tb_freq: 10
+	test_envs: [1]
+	trial_seed: 1
+	unique_name: 250312_13-22-16_clip_vitb16_GENIE
+	warmup: False
+	work_dir: .
+HParams:
+	data_augmentation: True
+	val_augment: False
+	resnet18: False
+	linear_steps: -1
+	resnet_dropout: 0.0
+	class_balanced: False
+	optimizer: genie
+	freeze_bn: False
+	pretrained: True
+	lr: 3.335053008064847e-05
+	batch_size: 18
+	weight_decay: 0.00011109601170966198
+	swad: False
+	swad_kwargs: 
+	  n_converge: 3
+	  n_tolerance: 6
+	  tolerance_ratio: 0.3
+	test_batchsize: 128
+	model: openclip_vit-b16
+	feat_layers: stem_block
+	ld: 0.1
+	lr_mult: 10.0
+	attn_tune: False
+	auto_lr: False
+Dataset:
+	[OfficeHome] #envs=4, #classes=65
+	env0: A (#2427)
+	env1: C (#4365)
+	env2: P (#4439)
+	env3: R (#4357)
+
+[37m[36mINFO[0m[0m 03/12 13:22:16 | n_steps = 5001
+[37m[36mINFO[0m[0m 03/12 13:22:16 | checkpoint_freq = 200
+[37m[36mINFO[0m[0m 03/12 13:22:16 | n_steps is updated to 5001 => 5001 for checkpointing
+[37m[36mINFO[0m[0m 03/12 13:22:16 | 
+[37m[36mINFO[0m[0m 03/12 13:22:16 | Testenv name escaping te_C -> te_C
+[37m[36mINFO[0m[0m 03/12 13:22:16 | Test envs = [1], name = te_C
+[37m[36mINFO[0m[0m 03/12 13:22:16 | Train environments: [0, 2, 3], Test environments: [1]
+[37m[36mINFO[0m[0m 03/12 13:22:16 | Batch sizes for each domain: [18, 0, 18, 18] (total=54)
+[37m[36mINFO[0m[0m 03/12 13:22:16 | steps-per-epoch for each domain: 107.89, 197.33, 193.67 -> min = 107.89
+[37m[36mINFO[0m[0m 03/12 13:22:18 | # of params = 86225985
+[37m[36mINFO[0m[0m 03/12 13:24:16 | test_in     test_out    train_in    train_out   tr_outloss  env0_in     env0_out    env1_in     env1_out    env2_in     env2_out    env3_in     env3_out    step        epoch       loss        step_time   eval_time  
+[37m[36mINFO[0m[0m 03/12 13:24:16 | 0.016609    0.014891    0.019371    0.017800    4.207456    0.018023    0.010309    0.016609    0.014891    0.018863    0.029312    0.021228    0.013777    0           0.000000    4.192136    1.263292    116.763758 
+[37m[36mINFO[0m[0m 03/12 13:27:21 | 0.086483    0.079038    0.145160    0.144350    3.532018    0.121009    0.125773    0.086483    0.079038    0.163007    0.147689    0.151463    0.159587    200         1.853759    3.936954    0.334053    118.451548 
+[37m[36mINFO[0m[0m 03/12 13:30:24 | 0.197881    0.211913    0.417882    0.379584    2.382878    0.354789    0.327835    0.197881    0.211913    0.478604    0.418264    0.420252    0.392652    400         3.707518    2.876341    0.323120    117.999711 
+[37m[36mINFO[0m[0m 03/12 13:33:37 | 0.278064    0.272623    0.665133    0.596065    1.554513    0.596292    0.511340    0.278064    0.272623    0.738176    0.678692    0.660929    0.598163    600         5.561277    1.728633    0.367462    119.859574 
+[37m[36mINFO[0m[0m 03/12 13:36:54 | 0.329038    0.342497    0.747386    0.663130    1.274186    0.705973    0.577320    0.329038    0.342497    0.800957    0.755355    0.735227    0.656716    800         7.415036    1.143836    0.395185    117.467815 
