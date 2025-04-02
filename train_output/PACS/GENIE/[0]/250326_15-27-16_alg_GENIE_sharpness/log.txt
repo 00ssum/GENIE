@@ -1,0 +1,95 @@
+[37m[36mINFO[0m[0m 03/26 15:27:16 | Command :: /jsm0707/GENIE/train_all.py alg_GENIE_sharpness config/resnet50_sgd.yaml --algorithm GENIE --evaluate --test_envs 0 --dataset PACS --trial_seed 2 --hparams_seed 9
+Environment:
+	Python: 3.8.10
+	PyTorch: 1.13.1+cu117
+	Torchvision: 0.14.1+cu117
+	CUDA: 11.7
+	CUDNN: 8500
+	NumPy: 1.22.4
+	PIL: 9.4.0
+Args:
+	algorithm: GENIE
+	attn_tune: False
+	auto_lr: False
+	checkpoint_freq: None
+	configs: ['config/resnet50_sgd.yaml']
+	data_dir: data
+	dataset: PACS
+	debug: False
+	deterministic: True
+	dump_scores: False
+	dump_similarities: False
+	evalmode: all
+	evaluate: True
+	full_data: False
+	holdout_fraction: 0.2
+	hparams_seed: 9
+	in_domain: False
+	model_save: None
+	mpa: False
+	name: alg_GENIE_sharpness
+	out_dir: train_output/PACS/GENIE/[0]/250326_15-27-16_alg_GENIE_sharpness
+	out_root: train_output/PACS/GENIE/[0]
+	prebuild_loader: False
+	resume_path: checkpoints/
+	seed: 0
+	show: False
+	small_bs: False
+	steps: None
+	tb_freq: 10
+	test_envs: [0]
+	trial_seed: 2
+	unique_name: 250326_15-27-16_alg_GENIE_sharpness
+	warmup: False
+	work_dir: .
+HParams:
+	data_augmentation: True
+	val_augment: False
+	resnet18: False
+	linear_steps: -1
+	resnet_dropout: 0.0
+	class_balanced: False
+	optimizer: sgd
+	freeze_bn: False
+	pretrained: True
+	lr: 2.716671579524612e-05
+	batch_size: 1
+	weight_decay: 1.71368232883332e-06
+	momentum: 0.9092933546128503
+	convergence_rate: 0.02426611940613899
+	moving_avg: 0.947722940872739
+	p: 0.5933807106679234
+	swad: False
+	test_batchsize: 128
+	model: resnet50
+	feat_layers: stem_block
+	attn_tune: False
+	auto_lr: False
+Dataset:
+	[PACS] #envs=4, #classes=7
+	env0: A (#2048)
+	env1: C (#2344)
+	env2: P (#1670)
+	env3: S (#3929)
+
+[37m[36mINFO[0m[0m 03/26 15:27:17 | n_steps = 5001
+[37m[36mINFO[0m[0m 03/26 15:27:17 | checkpoint_freq = 200
+[37m[36mINFO[0m[0m 03/26 15:27:17 | n_steps is updated to 5001 => 5001 for checkpointing
+[37m[36mINFO[0m[0m 03/26 15:27:17 | 
+[37m[36mINFO[0m[0m 03/26 15:27:17 | Testenv name escaping te_A -> te_A
+[37m[36mINFO[0m[0m 03/26 15:27:17 | Test envs = [0], name = te_A
+[37m[36mINFO[0m[0m 03/26 15:27:17 | Train environments: [1, 2, 3], Test environments: [0]
+[37m[36mINFO[0m[0m 03/26 15:27:17 | Batch sizes for each domain: [0, 1, 1, 1] (total=3)
+[37m[36mINFO[0m[0m 03/26 15:27:17 | steps-per-epoch for each domain: 1876.00, 1336.00, 3144.00 -> min = 1336.00
+[37m[36mINFO[0m[0m 03/26 15:27:19 | # of params = 23522375
+[37m[33mWARNING[0m[0m 03/26 15:27:19 | Checkpoint file not found: checkpoints/. Evaluating without loading checkpoint.
+[37m[36mINFO[0m[0m 03/26 15:27:54 | 0.166565    0.151589    0.099707    0.099008    2.007564    0.166565    0.151589    0.167377    0.141026    0.057635    0.080838    0.074109    0.075159    0.166565    0.151589    0.099707    0.099008    2.007564    0.166565    0.167377    0.057635    0.074109    0.151589    0.141026    0.080838    0.075159   
+[37m[36mINFO[0m[0m 03/26 15:27:54 | OOD = 16.357%
+[37m[36mINFO[0m[0m 03/26 15:27:54 | ID = 9.901%
+[37m[36mINFO[0m[0m 03/26 15:34:45 | Sharpness saved to train_output/PACS/GENIE/[0]/250326_15-27-16_alg_GENIE_sharpness/sharpness_results/GENIE_a.npy
+[37m[36mINFO[0m[0m 03/26 15:34:46 | === Summary ===
+[37m[36mINFO[0m[0m 03/26 15:34:46 | Command: /jsm0707/GENIE/train_all.py alg_GENIE_sharpness config/resnet50_sgd.yaml --algorithm GENIE --evaluate --test_envs 0 --dataset PACS --trial_seed 2 --hparams_seed 9
+[37m[36mINFO[0m[0m 03/26 15:34:46 | Unique name: 250326_15-27-16_alg_GENIE_sharpness
+[37m[36mINFO[0m[0m 03/26 15:34:46 | Out path: train_output/PACS/GENIE/[0]/250326_15-27-16_alg_GENIE_sharpness
+[37m[36mINFO[0m[0m 03/26 15:34:46 | Algorithm: GENIE
+[37m[36mINFO[0m[0m 03/26 15:34:46 | Dataset: PACS

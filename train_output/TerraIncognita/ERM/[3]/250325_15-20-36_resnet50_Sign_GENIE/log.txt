@@ -1,0 +1,80 @@
+[37m[36mINFO[0m[0m 03/25 15:20:36 | Command :: /jsm0707/GENIE/train_all.py resnet50_Sign_GENIE config/resnet50_Sign_GENIE.yaml --algorithm ERM --test_envs 3 --dataset TerraIncognita --trial_seed 1 --hparams_seed 18
+Environment:
+	Python: 3.8.10
+	PyTorch: 1.13.1+cu117
+	Torchvision: 0.14.1+cu117
+	CUDA: 11.7
+	CUDNN: 8500
+	NumPy: 1.24.4
+	PIL: 10.4.0
+Args:
+	algorithm: ERM
+	attn_tune: False
+	auto_lr: False
+	checkpoint_freq: None
+	configs: ['config/resnet50_Sign_GENIE.yaml']
+	data_dir: data
+	dataset: TerraIncognita
+	debug: False
+	deterministic: True
+	dump_scores: False
+	dump_similarities: False
+	evalmode: all
+	evaluate: False
+	full_data: False
+	holdout_fraction: 0.2
+	hparams_seed: 18
+	in_domain: False
+	model_save: None
+	mpa: False
+	name: resnet50_Sign_GENIE
+	out_dir: train_output/TerraIncognita/ERM/[3]/250325_15-20-36_resnet50_Sign_GENIE
+	out_root: train_output/TerraIncognita/ERM/[3]
+	prebuild_loader: False
+	resume_path: checkpoints/
+	seed: 0
+	show: False
+	small_bs: False
+	steps: None
+	tb_freq: 10
+	test_envs: [3]
+	trial_seed: 1
+	unique_name: 250325_15-20-36_resnet50_Sign_GENIE
+	warmup: False
+	work_dir: .
+HParams:
+	data_augmentation: True
+	val_augment: False
+	resnet18: False
+	linear_steps: -1
+	resnet_dropout: 0.1
+	class_balanced: False
+	optimizer: sign_genie
+	freeze_bn: False
+	pretrained: True
+	lr: 0.0002805925701721472
+	batch_size: 39
+	weight_decay: 1.5909976529017505e-06
+	swad: False
+	test_batchsize: 128
+	model: resnet50
+	feat_layers: stem_block
+	attn_tune: False
+	auto_lr: False
+Dataset:
+	[TerraIncognita] #envs=4, #classes=10
+	env0: L100 (#4741)
+	env1: L38 (#9736)
+	env2: L43 (#3970)
+	env3: L46 (#5883)
+
+[37m[36mINFO[0m[0m 03/25 15:20:36 | n_steps = 5001
+[37m[36mINFO[0m[0m 03/25 15:20:36 | checkpoint_freq = 200
+[37m[36mINFO[0m[0m 03/25 15:20:36 | n_steps is updated to 5001 => 5001 for checkpointing
+[37m[36mINFO[0m[0m 03/25 15:20:36 | 
+[37m[36mINFO[0m[0m 03/25 15:20:36 | Testenv name escaping te_L46 -> te_L46
+[37m[36mINFO[0m[0m 03/25 15:20:36 | Test envs = [3], name = te_L46
+[37m[36mINFO[0m[0m 03/25 15:20:36 | Train environments: [0, 1, 2], Test environments: [3]
+[37m[36mINFO[0m[0m 03/25 15:20:36 | Batch sizes for each domain: [39, 39, 39, 0] (total=117)
+[37m[36mINFO[0m[0m 03/25 15:20:36 | steps-per-epoch for each domain: 97.26, 199.72, 81.44 -> min = 81.44
+[37m[36mINFO[0m[0m 03/25 15:20:38 | # of params = 23528522

@@ -125,6 +125,18 @@ def _hparams(algorithm, dataset, random_state):
         hparams['moving_avg']= ( 0.95, random_state.uniform(0.9, 0.999))
         hparams['p'] =( 0.4, random_state.uniform(0.1, 0.8))
 
+    elif algorithm == 'GENIE_hp':
+        hparams['momentum'] = (0.9, random_state.uniform(0.8, 0.999))
+        hparams['convergence_rate'] = (0.015, 10 ** random_state.uniform(-3, -1))
+        # hparams['moving_avg']= ( 0.95, random_state.uniform(0.9, 0.999))
+        hparams['p'] =( 0.4, random_state.uniform(0.1, 0.8))
+
+    elif algorithm == 'GENIE_hp_p':
+        hparams['momentum'] = (0.9, random_state.uniform(0.8, 0.999))
+        hparams['convergence_rate'] = (0.015, 10 ** random_state.uniform(-3, -1))
+        hparams['moving_avg']= ( 0.95, random_state.uniform(0.9, 0.999))
+        #hparams['p'] =( 0.4, random_state.uniform(0.1, 0.8))
+
     elif algorithm == 'GENIE_Precondition':
         hparams['momentum'] = (0.9, random_state.uniform(0.8, 0.999))
         hparams['convergence_rate'] = (0.015, 10 ** random_state.uniform(-3, -1))

@@ -49,6 +49,29 @@ def save_cumulative_gradient_change(sum_cumulative_g_change, save_path, vmin=0, 
     plt.savefig(save_path, bbox_inches="tight")
     plt.close()
 
+def compute_local_sharpness(model, criterion, x, y, rho_list, n_iter=20):
+    model.eval()
+    sharpness_list = []
+    base_loss = criterion(model(x), y).item()
+
+    for rho in rho_list:
+        delta = torch.zeros_like(x, dtype=x.dtype, requires_grad=True)
+        optimizer_delta = torch.optim.SGD([delta], lr=0.1)
+
+        for _ in range(n_iter):
+            optimizer_delta.zero_grad()
+            loss = criterion(model(x + delta), y)
+            loss.backward()
+            grad = delta.grad
+            norm = torch.norm(grad.view(grad.size(0), -1), dim=1, keepdim=True)
+            grad = grad / (norm + 1e-8).view(-1, 1, 1, 1)
+            delta.data = (delta + rho * grad).clamp(-rho, rho)
+
+        perturbed_loss = criterion(model(x + delta), y).item()
+        sharpness_list.append(perturbed_loss - base_loss)
+
+    return sharpness_list
+
 def json_handler(v):
     if isinstance(v, (Path, range)):
         return str(v)
@@ -56,6 +79,10 @@ def json_handler(v):
 
 def train(test_envs, args, hparams, n_steps, checkpoint_freq, logger, writer, target_env=None):
     logger.info("")
+    features_before = None
+    labels_before = None
+    features_after = None
+    labels_after = None
 #region Description ###setup dataset & loader
     args.real_test_envs = test_envs  # for log
     algorithm_class = algorithms.get_algorithm_class(args.algorithm)
@@ -201,7 +228,6 @@ def train(test_envs, args, hparams, n_steps, checkpoint_freq, logger, writer, ta
         for k, acc in ret.items():
             logger.info(f"{k} = {acc:.3%}")
 
-
         return ret, records
 
 #endregion Description ### evaluate = True
@@ -216,6 +242,23 @@ def train(test_envs, args, hparams, n_steps, checkpoint_freq, logger, writer, ta
         batches = {key: [tensor.cuda() for tensor in tensorlist] for key, tensorlist in batches.items()}
 
         inputs = {**batches, "step": step}
+        #visual
+        # if step == 0:
+        #     logger.info("Extracting features BEFORE training...")
+        #     sample_loader = FastDataLoader(
+        #         dataset=in_splits[0][0],
+        #         batch_size=128,
+        #         num_workers=dataset.N_WORKERS
+        #     )
+        #     features_before_list, labels_before_list = [], []
+        #     for batch in sample_loader:
+        #         x, y = batch["x"], batch["y"]
+        #         x = x.cuda()
+        #         feats = algorithm.extract_features(x)
+        #         features_before_list.append(feats.cpu())
+        #         labels_before_list.append(y)
+        #     features_before = torch.cat(features_before_list).numpy()
+        #     labels_before = torch.cat(labels_before_list).numpy()
         step_vals = algorithm.update(**inputs)
 
         if "grads" in step_vals:
@@ -344,9 +387,52 @@ def train(test_envs, args, hparams, n_steps, checkpoint_freq, logger, writer, ta
                     if algorithm.lr_schedule_changes == 3:
                             break
 
+            # # sharpness 측정
+            # from pathlib import Path
+
+            # rho_list = [0.01 * i for i in range(1, 6)]
+            # criterion = torch.nn.CrossEntropyLoss()
+
+            # test_env_idx = test_envs[0]
+            # eval_loader_kwargs_testenv = eval_loaders_kwargs[test_env_idx]
+            # test_loader = torch.utils.data.DataLoader(**eval_loader_kwargs_testenv)
+
+            # batch = next(iter(test_loader))
+            # x, y = batch["x"].cuda(), batch["y"].cuda()
+
+            # sharpness_vals = compute_local_sharpness(algorithm.network, criterion, x, y, rho_list)
+
+            # # 저장
+            # sharpness_dir = Path(args.out_dir) / "sharpness_progress"
+            # sharpness_dir.mkdir(exist_ok=True, parents=True)
+
+            # csv_path = sharpness_dir / "sharpness_over_time.csv"
+            # with open(csv_path, "a") as f:
+            #     f.write(f"{step}," + ",".join(map(str, sharpness_vals)) + "\n")
+
         if step % args.tb_freq == 0:
             # add step values only for tb log
             writer.add_scalars_with_prefix(step_vals, step, f"{testenv_name}/summary/")
+        # visual        
+        # if step == n_steps - 1:
+        #     logger.info("Extracting features AFTER training...")
+        #     features_after_list, labels_after_list = [], []
+        #     for batch in sample_loader:
+        #         x, y = batch["x"], batch["y"]
+        #         x = x.cuda()
+        #         feats = algorithm.extract_features(x)
+        #         features_after_list.append(feats.cpu())
+        #         labels_after_list.append(y)
+        #     features_after = torch.cat(features_after_list).numpy()
+        #     labels_after = torch.cat(labels_after_list).numpy()
+
+        #     # 저장
+        #     np.save(args.out_dir / "features_before.npy", features_before)
+        #     np.save(args.out_dir / "labels_before.npy", labels_before)
+        #     np.save(args.out_dir / "features_after.npy", features_after)
+        #     np.save(args.out_dir / "labels_after.npy", labels_after)
+
+        #     logger.info("Feature representations saved to disk.")
 
     if cumulative_g_change is not None:
         save_path = args.out_dir / "sum_cumulative_g_change.npy"

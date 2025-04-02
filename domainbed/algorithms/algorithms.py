@@ -246,7 +246,63 @@ class ERM_new(Algorithm):
 
     def predict(self, x):
         return self.network(x)
-    
+
+class ERM_visual(Algorithm):
+    def __init__(self, input_shape, num_classes, num_domains, hparams):
+        super(ERM_visual, self).__init__(input_shape, num_classes, num_domains, hparams)
+        self.featurizer = networks.Featurizer(input_shape, self.hparams)
+        self.classifier = nn.Linear(self.featurizer.n_outputs, num_classes)
+        self.network = nn.Sequential(self.featurizer, self.classifier)
+
+        self.optimizer = get_optimizer(
+            hparams["optimizer"],
+            self.network.parameters(),
+            lr=self.hparams["lr"],
+            weight_decay=self.hparams["weight_decay"])
+
+        self.pre_grads = None
+        self.cumulative_g_change = None
+
+    def update(self, x, y, **kwargs):
+        all_x = torch.cat(x)
+        all_y = torch.cat(y)
+        loss = F.cross_entropy(self.predict(all_x), all_y)
+        self.optimizer.zero_grad()
+        loss.backward()
+
+        grads = torch.cat([param.grad.view(-1) for param in self.network.parameters() if param.grad is not None])
+
+        grads_list = []
+        for p in self.network.parameters():
+            if p.grad is None:
+                grads_list.append(torch.zeros_like(p).view(-1))
+            else:
+                grads_list.append(p.grad.view(-1))
+        grads_2 = torch.cat(grads_list)
+
+        if self.pre_grads is None:
+            g_change = torch.zeros_like(grads_2)
+        else:
+            g_change = torch.abs(grads_2 - self.pre_grads)
+
+        if self.cumulative_g_change is None:
+            self.cumulative_g_change = g_change.clone()
+        else:
+            self.cumulative_g_change += g_change
+
+        self.pre_grads = grads_2.clone()
+
+        self.optimizer.step()
+        return {"loss": loss.item(), "grads": grads, "cumulative_g_change" : self.cumulative_g_change}
+
+    def predict(self, x):
+        return self.network(x)
+
+    def extract_features(self, x):
+        self.featurizer.eval()
+        with torch.no_grad():
+            return self.featurizer(x)
+
 
 class ERM(Algorithm):
     def __init__(self, input_shape, num_classes, num_domains, hparams):
@@ -346,12 +402,6 @@ class GENIE(Algorithm):
             weight_decay=self.hparams['weight_decay'], 
             nesterov=True
             )
-        # self.optimizer = get_optimizer(
-        #     hparams["optimizer"],
-        #     self.network.parameters(), 
-        #     lr=self.hparams["lr"],
-        #     weight_decay=self.hparams['weight_decay']
-        #     )
         
         self.prev_state = None
         self.gmean = None
@@ -414,7 +464,6 @@ class GENIE(Algorithm):
         grad_sgd = {}
         pgrad = {}
         pGsnr = {}
-
         self.scale = (moving_avg * self.scale + 1.0)
         scale1 = (1 - moving_avg) * self.scale
         scale2 = 2.0 - scale1
@@ -451,6 +500,247 @@ class GENIE(Algorithm):
             for k, param in self.network.named_parameters():
                 mask = (torch.rand_like(param) > self.hparams['p']).float() / (1-self.hparams['p'])
                 self.prev_state[k] -= (pgrad[k] + grad_sgd[k]) * mask * convergence_rate
+
+    def predict(self, x):
+        return self.network(x)
+
+    # def extract_features(self, x):
+    #     self.featurizer.eval()
+    #     with torch.no_grad():
+    #         return self.featurizer(x)
+
+class GENIE_hp(Algorithm):
+    def __init__(self, input_shape, num_classes, num_domains, hparams):
+        super(GENIE_hp, self).__init__(input_shape, num_classes, num_domains, hparams)
+        self.featurizer = networks.Featurizer(input_shape, self.hparams)
+        self.classifier = nn.Linear(self.featurizer.n_outputs, num_classes)
+        self.network = nn.Sequential(self.featurizer, self.classifier)
+
+        self.optimizer = get_optimizer(
+            hparams["optimizer"],
+            self.network.parameters(), 
+            lr=self.hparams["lr"], 
+            momentum=self.hparams["momentum"], 
+            weight_decay=self.hparams['weight_decay'], 
+            nesterov=True
+            )
+        
+        self.prev_state = None
+        self.gmean = None
+        self.ge2 = None
+        self.scale = None
+        self.pre_grads = None
+        self.cumulative_g_change = None
+    
+    def get_current_state(self):
+        return {name: param.clone().detach() for name, param in self.network.named_parameters()}
+
+    def set_state(self, new_state):
+        for name, param in self.network.named_parameters():
+            param.data.copy_(new_state[name])
+            
+    def update(self, x, y, **kwargs):
+        all_x = torch.cat(x)
+        all_y = torch.cat(y)
+        loss = F.cross_entropy(self.predict(all_x), all_y)
+        self.optimizer.zero_grad()
+        loss.backward()
+
+        grads = torch.cat([param.grad.view(-1) for param in self.network.parameters() if param.grad is not None])
+        grads_list = []
+        for p in self.network.parameters():
+            if p.grad is None:
+                grads_list.append(torch.zeros_like(p).view(-1))  # None인 경우 0으로 채움
+            else:
+                grads_list.append(p.grad.view(-1))
+        grads_2 = torch.cat(grads_list)
+        if self.pre_grads is None:
+            g_change = torch.zeros_like(grads_2)  # 첫 번째 업데이트 시 변화량은 0
+        else:
+            g_change = torch.abs(grads_2 - self.pre_grads)
+        if self.cumulative_g_change is None:
+            self.cumulative_g_change = g_change.clone()
+        else:
+            self.cumulative_g_change += g_change  # 변화량 누적
+        self.pre_grads = grads_2.clone()
+
+
+        current_state = self.get_current_state()
+
+        if self.prev_state is None:
+            self._initialize_preconditioning(current_state)
+
+        self._update_preconditioning(convergence_rate=self.hparams['convergence_rate'], moving_avg=0.995)
+        
+
+        self.set_state(self.prev_state)
+        return {"loss": loss.item(), "grads": grads, "cumulative_g_change" : self.cumulative_g_change}
+
+    def _initialize_preconditioning(self, current_state):
+        self.prev_state = current_state
+        self.gmean = {k: torch.zeros_like(param) for k, param in self.network.named_parameters()}
+        self.ge2 = {k: torch.zeros_like(param) for k, param in self.network.named_parameters()}
+        self.scale = 0.0
+
+    def _update_preconditioning(self, convergence_rate, moving_avg):
+        grad_sgd = {}
+        pgrad = {}
+        pGsnr = {}
+        self.scale = (moving_avg * self.scale + 1.0)
+        scale1 = (1 - moving_avg) * self.scale
+        scale2 = 2.0 - scale1
+        rho = (1.0 - moving_avg) * scale2 / (1.0 + moving_avg) / scale1
+
+        with torch.no_grad():
+            for k, param in self.network.named_parameters():
+                delta = (param.grad.data).detach()
+                self.gmean[k] = self.gmean[k] * moving_avg + delta * (1.0 - moving_avg)
+                self.ge2[k] = self.ge2[k] * moving_avg + (delta ** 2) * (1.0 - moving_avg)
+                gm = self.gmean[k] / scale1
+                ge2 = self.ge2[k] / scale1
+                var = ge2 - gm.square()
+                var /= (1.0 - rho)
+                var = torch.where(var > 0.0, var, (torch.zeros_like(var) + 1e-8))
+
+                invvar = torch.clamp(1 / var, min=0.0, max=10.0)
+                mvar = rho * var
+                mvar = torch.where(mvar > 0.0, mvar, (torch.zeros_like(mvar) + 1e-8))
+                
+                tanh_invvar = torch.tanh(invvar)
+                numerator = 1.0
+                denominator = 1.0 + mvar / (gm.square() + 1e-8)
+                pGsnr[k] = (numerator / denominator) * tanh_invvar
+
+                noise_scale = torch.sum(tanh_invvar * torch.abs(gm) * (numerator / denominator)) / torch.sum(tanh_invvar)
+                noise = torch.normal(torch.zeros_like(delta), torch.ones_like(delta))
+                noise = noise * noise_scale
+                grad_sgd[k] = (1 - tanh_invvar) * noise
+
+            for k, param in self.network.named_parameters():
+                pgrad[k] = self.gmean[k] / scale1 * pGsnr[k].view_as(param)
+
+            for k, param in self.network.named_parameters():
+                mask = (torch.rand_like(param) > self.hparams['p']).float() / (1-self.hparams['p'])
+                self.prev_state[k] -= (pgrad[k] + grad_sgd[k]) * mask * convergence_rate
+
+    def predict(self, x):
+        return self.network(x)
+
+class GENIE_hp_p(Algorithm):
+    def __init__(self, input_shape, num_classes, num_domains, hparams):
+        super(GENIE_hp_p, self).__init__(input_shape, num_classes, num_domains, hparams)
+        self.featurizer = networks.Featurizer(input_shape, self.hparams)
+        self.classifier = nn.Linear(self.featurizer.n_outputs, num_classes)
+        self.network = nn.Sequential(self.featurizer, self.classifier)
+
+        self.optimizer = get_optimizer(
+            hparams["optimizer"],
+            self.network.parameters(), 
+            lr=self.hparams["lr"], 
+            momentum=self.hparams["momentum"], 
+            weight_decay=self.hparams['weight_decay'], 
+            nesterov=True
+            )
+        
+        self.prev_state = None
+        self.gmean = None
+        self.ge2 = None
+        self.scale = None
+        self.pre_grads = None
+        self.cumulative_g_change = None
+    
+    def get_current_state(self):
+        return {name: param.clone().detach() for name, param in self.network.named_parameters()}
+
+    def set_state(self, new_state):
+        for name, param in self.network.named_parameters():
+            param.data.copy_(new_state[name])
+            
+    def update(self, x, y, **kwargs):
+        all_x = torch.cat(x)
+        all_y = torch.cat(y)
+        loss = F.cross_entropy(self.predict(all_x), all_y)
+        self.optimizer.zero_grad()
+        loss.backward()
+
+        grads = torch.cat([param.grad.view(-1) for param in self.network.parameters() if param.grad is not None])
+        grads_list = []
+        for p in self.network.parameters():
+            if p.grad is None:
+                grads_list.append(torch.zeros_like(p).view(-1))  # None인 경우 0으로 채움
+            else:
+                grads_list.append(p.grad.view(-1))
+        grads_2 = torch.cat(grads_list)
+        if self.pre_grads is None:
+            g_change = torch.zeros_like(grads_2)  # 첫 번째 업데이트 시 변화량은 0
+        else:
+            g_change = torch.abs(grads_2 - self.pre_grads)
+        if self.cumulative_g_change is None:
+            self.cumulative_g_change = g_change.clone()
+        else:
+            self.cumulative_g_change += g_change  # 변화량 누적
+        self.pre_grads = grads_2.clone()
+
+
+        current_state = self.get_current_state()
+
+        if self.prev_state is None:
+            self._initialize_preconditioning(current_state)
+
+        self._update_preconditioning(convergence_rate=self.hparams['convergence_rate'], moving_avg=self.hparams['moving_avg'])
+        
+
+        self.set_state(self.prev_state)
+        return {"loss": loss.item(), "grads": grads, "cumulative_g_change" : self.cumulative_g_change}
+
+    def _initialize_preconditioning(self, current_state):
+        self.prev_state = current_state
+        self.gmean = {k: torch.zeros_like(param) for k, param in self.network.named_parameters()}
+        self.ge2 = {k: torch.zeros_like(param) for k, param in self.network.named_parameters()}
+        self.scale = 0.0
+
+    def _update_preconditioning(self, convergence_rate, moving_avg):
+        grad_sgd = {}
+        pgrad = {}
+        pGsnr = {}
+        self.scale = (moving_avg * self.scale + 1.0)
+        scale1 = (1 - moving_avg) * self.scale
+        scale2 = 2.0 - scale1
+        rho = (1.0 - moving_avg) * scale2 / (1.0 + moving_avg) / scale1
+
+        with torch.no_grad():
+            for k, param in self.network.named_parameters():
+                delta = (param.grad.data).detach()
+                self.gmean[k] = self.gmean[k] * moving_avg + delta * (1.0 - moving_avg)
+                self.ge2[k] = self.ge2[k] * moving_avg + (delta ** 2) * (1.0 - moving_avg)
+                gm = self.gmean[k] / scale1
+                ge2 = self.ge2[k] / scale1
+                var = ge2 - gm.square()
+                var /= (1.0 - rho)
+                var = torch.where(var > 0.0, var, (torch.zeros_like(var) + 1e-8))
+
+                invvar = torch.clamp(1 / var, min=0.0, max=10.0)
+                mvar = rho * var
+                mvar = torch.where(mvar > 0.0, mvar, (torch.zeros_like(mvar) + 1e-8))
+                
+                tanh_invvar = torch.tanh(invvar)
+                numerator = 1.0
+                denominator = 1.0 + mvar / (gm.square() + 1e-8)
+                pGsnr[k] = (numerator / denominator) * tanh_invvar
+
+                noise_scale = torch.sum(tanh_invvar * torch.abs(gm) * (numerator / denominator)) / torch.sum(tanh_invvar)
+                noise = torch.normal(torch.zeros_like(delta), torch.ones_like(delta))
+                noise = noise * noise_scale
+                grad_sgd[k] = (1 - tanh_invvar) * noise
+
+            for k, param in self.network.named_parameters():
+                pgrad[k] = self.gmean[k] / scale1 * pGsnr[k].view_as(param)
+
+            for k, param in self.network.named_parameters():
+                p=0.8
+                mask = (torch.rand_like(param) > p).float() / (1-p)
+                self.prev_state[k] -= (pgrad[k] + grad_sgd[k]) * mask * convergence_rate
+                # self.prev_state[k] -= (pgrad[k] + grad_sgd[k]) * convergence_rate
 
     def predict(self, x):
         return self.network(x)
