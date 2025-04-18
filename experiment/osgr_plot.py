@@ -72,27 +72,24 @@ def plot_tensorboard_data(data, xlabel, ylabel, label_map=None, output_file=None
 
 # 사용 예시
 if __name__ == "__main__":
-    # 사용자 입력
-    # dataset = "VLCS"
-    # env = "[1]"
-    # tag = "te_L/OSGR/OSGR" 
-    # output_file = str(dataset) + "_" + str(env) + ".png"
-
-    # GENIE = "250119_04-26-21_B_VLCS1_iter"
-    # SGD = "250120_22-16-36_ERM1_SGD_iter"
-    # Adam = "250120_22-14-14_ERM1_Adam_iter"
-    # SAM = "250125_10-29-56_resnet50_sgd"
-    
-    
     dataset = "VLCS"
-    env = "[0]"
-    tag = "te_C/OSGR/OSGR" 
-    output_file = "output/"+str(dataset) + "_" + str(env) + ".png"
+    env = "[1]"
+    tag = "te_L/OSGR/OSGR" 
+    output_file = str(dataset) + "_" + str(env) + ".png"
 
-    GENIE = "250118_21-07-58_B_VLCS0_iter"
-    SGD = "250120_14-31-58_ERM0_SGD_iter"
-    Adam = "250120_14-32-48_ERM0_Adam_iter"
-    SAM = "250125_02-32-15_resnet50_sgd"
+    GENIE = "250119_04-26-21_B_VLCS1 (iter15000)"
+    SGD = "250120_22-16-36_resnet50_sgd (iter15000)"
+    Adam = "250120_22-14-14_resnet50_adam (iter15000)"
+    SAM = "250125_10-29-56_resnet50_sgd (iter15000)"
+
+    # env = "[0]"
+    # tag = "te_C/OSGR/OSGR" 
+    # output_file = "output/"+str(dataset) + "_" + str(env) + ".png"
+
+    # GENIE = "250118_21-07-58_B_VLCS0 (iter15000)"
+    # SGD = "250120_14-31-58_resnet50_sgd (iter15000)"
+    # Adam = "250120_14-32-48_resnet50_adam (iter15000)"
+    # SAM = "250125_02-32-15_resnet50_sgd (iter15000)"
 
     path = os.path.join("/jsm0707/GENIE/train_output", dataset)
 
@@ -103,6 +100,7 @@ if __name__ == "__main__":
         os.path.join(path, "SAM", env, SAM)
 
     ] 
+
 
     label_map = {
         os.path.join(path, "GENIE", env, GENIE): "GENIE",

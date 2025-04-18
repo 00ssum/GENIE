@@ -189,24 +189,8 @@ def main():
     if args.in_domain:
         args.test_envs = ['id']
 
-    ###########################################################################
-    # Run
-    ###########################################################################
-
-    # for test_env in args.test_envs:
-    #     print("trian_all: test_envs",test_env)
-    #     res, records = train(
-    #         test_env,
-    #         args=args,
-    #         hparams=hparams,
-    #         n_steps=n_steps,
-    #         checkpoint_freq=checkpoint_freq,
-    #         logger=logger,
-    #         writer=writer,
-    #     )
-
     test_env = args.test_envs
-    res, records = train(test_env,
+    train(test_env,
         args=args,
         hparams=hparams,
         n_steps=n_steps,
