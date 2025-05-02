@@ -100,7 +100,7 @@ def save_to_excel_by_dataset_algorithm_and_env(results_by_dataset_and_algorithm,
 base_path = "/jsm0707/GENIE/train_output"
 output_dir = "output/results"
 algorithms = ["GENIE", "CORAL","ERM", "SAM","RSC", "MIRO"]
-datasets = ["PACS", "OfficeHome", "TerraIncognita", "VLCS"]
+datasets = ["PACS", "OfficeHome", "TerraIncognita", "VLCS", "DomainNet"]
 
 # Collect results and save to Excel
 results_by_dataset_and_algorithm = collect_results_by_dataset_and_algorithm(base_path, algorithms, datasets)
