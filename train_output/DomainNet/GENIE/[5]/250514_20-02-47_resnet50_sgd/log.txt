@@ -1,0 +1,90 @@
+[37m[36mINFO[0m[0m 05/14 20:02:47 | Command :: /jsm0707/GENIE/train_all.py resnet50_sgd config/resnet50_sgd.yaml --algorithm GENIE --test_envs 5 --dataset DomainNet --trial_seed 2 --hparams_seed 11
+Environment:
+	Python: 3.8.10
+	PyTorch: 1.13.1+cu117
+	Torchvision: 0.14.1+cu117
+	CUDA: 11.7
+	CUDNN: 8500
+	NumPy: 1.24.4
+	PIL: 10.4.0
+Args:
+	algorithm: GENIE
+	attn_tune: False
+	auto_lr: False
+	checkpoint_freq: None
+	configs: ['config/resnet50_sgd.yaml']
+	data_dir: data
+	dataset: DomainNet
+	debug: False
+	deterministic: True
+	dump_scores: False
+	dump_similarities: False
+	evalmode: all
+	evaluate: False
+	full_data: False
+	holdout_fraction: 0.2
+	hparams_seed: 11
+	in_domain: False
+	model_save: None
+	mpa: False
+	name: resnet50_sgd
+	out_dir: train_output/DomainNet/GENIE/[5]/250514_20-02-47_resnet50_sgd
+	out_root: train_output/DomainNet/GENIE/[5]
+	prebuild_loader: False
+	resume_path: checkpoints/
+	seed: 0
+	show: False
+	small_bs: False
+	steps: None
+	tb_freq: 10
+	test_envs: [5]
+	trial_seed: 2
+	unique_name: 250514_20-02-47_resnet50_sgd
+	warmup: False
+	work_dir: .
+HParams:
+	data_augmentation: True
+	val_augment: False
+	resnet18: False
+	linear_steps: -1
+	resnet_dropout: 0.1
+	class_balanced: False
+	optimizer: sgd
+	freeze_bn: False
+	pretrained: True
+	lr: 0.00030079935666912124
+	batch_size: 13
+	weight_decay: 6.276702207693199e-06
+	momentum: 0.9714928076636059
+	convergence_rate: 0.029503606758655265
+	moving_avg: 0.924385722514665
+	p: 0.3405683122163543
+	swad: False
+	test_batchsize: 128
+	model: resnet50
+	feat_layers: stem_block
+	attn_tune: False
+	auto_lr: False
+Dataset:
+	[DomainNet] #envs=6, #classes=345
+	env0: clip (#48129)
+	env1: info (#51605)
+	env2: paint (#72266)
+	env3: quick (#172500)
+	env4: real (#172947)
+	env5: sketch (#69128)
+
+[37m[36mINFO[0m[0m 05/14 20:02:48 | n_steps = 15001
+[37m[36mINFO[0m[0m 05/14 20:02:48 | checkpoint_freq = 1000
+[37m[36mINFO[0m[0m 05/14 20:02:48 | n_steps is updated to 15001 => 15001 for checkpointing
+[37m[36mINFO[0m[0m 05/14 20:02:48 | 
+[37m[36mINFO[0m[0m 05/14 20:02:49 | Testenv name escaping te_sketch -> te_sketch
+[37m[36mINFO[0m[0m 05/14 20:02:49 | Test envs = [5], name = te_sketch
+[37m[36mINFO[0m[0m 05/14 20:02:49 | Train environments: [0, 1, 2, 3, 4], Test environments: [5]
+[37m[36mINFO[0m[0m 05/14 20:02:49 | Batch sizes for each domain: [13, 13, 13, 13, 13, 0] (total=65)
+[37m[36mINFO[0m[0m 05/14 20:02:49 | steps-per-epoch for each domain: 2961.85, 3175.69, 4447.15, 10615.38, 10642.92 -> min = 2961.85
+[37m[36mINFO[0m[0m 05/14 20:02:50 | # of params = 24214937
+[37m[36mINFO[0m[0m 05/14 20:40:49 | test_in     test_out    train_in    train_out   tr_outloss  env0_in     env0_out    env1_in     env1_out    env2_in     env2_out    env3_in     env3_out    env4_in     env4_out    env5_in     env5_out    step        epoch       loss        step_time   eval_time  
+[37m[36mINFO[0m[0m 05/14 20:40:49 | 0.002929    0.002170    0.003338    0.003317    5.897870    0.002260    0.001870    0.002374    0.002519    0.005483    0.004290    0.003464    0.004899    0.003108    0.003007    0.002929    0.002170    0           0.000000    5.894516    1.042212    2278.42481 
+[37m[36mINFO[0m[0m 05/14 21:21:50 | 0.323780    0.319132    0.351313    0.354884    3.082205    0.452265    0.448935    0.191987    0.172173    0.385675    0.394036    0.238616    0.254029    0.488024    0.505247    0.323780    0.319132    1000        0.337627    4.189592    0.206108    2255.07351 
+[37m[36mINFO[0m[0m 05/14 22:03:18 | 0.382656    0.385750    0.437500    0.432802    2.616506    0.544385    0.540571    0.254021    0.221490    0.469202    0.462188    0.348326    0.363681    0.571568    0.576079    0.382656    0.385750    2000        0.675255    2.823045    0.208447    2279.50285 
